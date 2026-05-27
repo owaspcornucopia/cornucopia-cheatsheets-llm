@@ -1,4 +1,4 @@
-# PwnedNext - LLM App
+# PwnedNext - LLM App Cheat Sheet
 
 ## High-Level Architecture of AI Anti-Fraud 3.0
 
