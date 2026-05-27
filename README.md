@@ -14,7 +14,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 
 ## Data Validation & Encoding
 
-| ID | Applicable | Threat | Details |
+| Value | Applicable | Threat | Details |
 |----|------------|--------|---------|
 | 2 | true | Error messages and responses reveal internal configuration, SQL queries, and model output | [VE2](help/VE2.md) |
 | 3 | true | No validation on user questions — arbitrary length, format, and content accepted | [VE3](help/VE3.md) |
@@ -27,7 +27,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 
 ## Authentication
 
-| ID | Applicable | Threat | Details |
+| Value | Applicable | Threat | Details |
 |----|------------|--------|---------|
 | 2 | true | Token use is invisible — legitimate owners cannot detect stolen token usage | [AT2](help/AT2.md) |
 | 3 | true | Tokens exposed in transit (no TLS) and at rest (plaintext in code) | [AT3](help/AT3.md) |
@@ -40,7 +40,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 
 ## Session Management
 
-| ID | Applicable | Threat | Details |
+| Value | Applicable | Threat | Details |
 |----|------------|--------|---------|
 | 3 | true | Stolen tokens cannot be detected or terminated by the owner | [SM3](help/SM3.md) |
 | 6 | true | No session timeout — tokens valid indefinitely | [SM6](help/SM6.md) |
@@ -53,7 +53,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 
 ## Authorization
 
-| ID | Applicable | Threat | Details |
+| Value | Applicable | Threat | Details |
 |----|------------|--------|---------|
 | 3 | true | Data accessible through SQL injection — only token validity is checked, not data scope | [AZ3](help/AZ3.md) |
 | 4 | true | Authorization design does not default to denying access on failure | [AZ4](help/AZ4.md) |
@@ -67,7 +67,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 
 ## Cryptography
 
-| ID | Applicable | Threat | Details |
+| Value | Applicable | Threat | Details |
 |----|------------|--------|---------|
 | 3 | true | Internal HTTP channel between app and model_service carries conversation and SQL with no integrity checking | [CR3](help/CR3.md) |
 | 6 | true | Data in transit is unencrypted — tokens, personal data, and results sent in plaintext | [CR6](help/CR6.md) |
@@ -77,7 +77,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 
 ## Cornucopia
 
-| ID | Applicable | Threat | Details |
+| Value | Applicable | Threat | Details |
 |----|------------|--------|---------|
 | 2 | true | Dangerous programming patterns — direct SQL execution, `ast.literal_eval()` on untrusted input | [C2](help/C2.md) |
 | 6 | true | Error handling is inconsistent, leaks information, and returns wrong HTTP status codes | [C6](help/C6.md) |
@@ -89,7 +89,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 
 ## Large Language Models
 
-| ID | Applicable | Threat | Details |
+| Value | Applicable | Threat | Details |
 |----|------------|--------|---------|
 | 2 | true | No rate limiting — resource exhaustion through unlimited inference requests | [LLM2](help/LLM2.md) |
 | 3 | true | Fraud determinations made without human oversight, risk of acting on hallucinations | [LLM3](help/LLM3.md) |
@@ -124,7 +124,7 @@ The following threats were assessed and determined not applicable to this applic
 
 ### Data Validation & Encoding
 
-| ID | Applicable | Reason | Details |
+| Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 5 | false | No client-side validation exists to bypass | [VE5](help/VE5.md) |
 | 6 | false | No file upload functionality | [VE6](help/VE6.md) |
@@ -134,7 +134,7 @@ The following threats were assessed and determined not applicable to this applic
 
 ### Authentication
 
-| ID | Applicable | Reason | Details |
+| Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 4 | false | No password/credential storage (tokens are hardcoded, not user-managed) | [AT4](help/AT4.md) |
 | 8 | false | No password change/reset functionality | [AT8](help/AT8.md) |
@@ -144,7 +144,7 @@ The following threats were assessed and determined not applicable to this applic
 
 ### Session Management
 
-| ID | Applicable | Reason | Details |
+| Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 2 | false | No session state or cookies | [SM2](help/SM2.md) |
 | 4 | false | No session cookies to intercept | [SM4](help/SM4.md) |
@@ -154,7 +154,7 @@ The following threats were assessed and determined not applicable to this applic
 
 ### Authorization
 
-| ID | Applicable | Reason | Details |
+| Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 2 | false | No privilege elevation path (flat token model) | [AZ2](help/AZ2.md) |
 | 9 | false | No client-side authorization checks to bypass | [AZ9](help/AZ9.md) |
@@ -163,7 +163,7 @@ The following threats were assessed and determined not applicable to this applic
 
 ### Cryptography
 
-| ID | Applicable | Reason | Details |
+| Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 2 | false | No obfuscation used (data is plaintext, not obfuscated) | [CR2](help/CR2.md) |
 | 4 | false | No encrypted channel exists (can't have unencrypted-within-encrypted) | [CR4](help/CR4.md) |
@@ -176,7 +176,7 @@ The following threats were assessed and determined not applicable to this applic
 
 ### Cornucopia
 
-| ID | Applicable | Reason | Details |
+| Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 3 | false | No client-side binaries to decompile | [C3](help/C3.md) |
 | 4 | false | Non-repudiation not relevant (read-only fraud queries) | [C4](help/C4.md) |
@@ -187,14 +187,14 @@ The following threats were assessed and determined not applicable to this applic
 
 ### Wild Card
 
-| ID | Applicable | Reason | Details |
+| Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | Joker A | false | Backend API cannot attack end-user systems | [JOA](help/JOA.md) |
 | Joker B | false | Compliance is a consequence, not a distinct attack vector | [JOB](help/JOB.md) |
 
 ### Large Language Models
 
-| ID | Applicable | Reason | Details |
+| Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 6 | false | No RAG, vector DB, or MCP sources to poison | [LLM6](help/LLM6.md) |
 | Ace | false | Creative/novel placeholder — not a specific threat | [LLMA](help/LLMA.md) |
