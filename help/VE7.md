@@ -1,4 +1,4 @@
-[← Back to Cheat Sheet](/README.md)
+[← Back to Cheat Sheet](/README.md#fraud-investigation-llm-application--cheat-sheet)
 
 # VE7 — Craft Payloads to Foil Input Validation
 

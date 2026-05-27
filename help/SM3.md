@@ -1,4 +1,4 @@
-[← Back to Cheat Sheet](/README.md)
+[← Back to Cheat Sheet](/README.md#fraud-investigation-llm-application--cheat-sheet)
 
 # SM3 — Stolen Session Tokens Cannot Be Detected or Terminated
 

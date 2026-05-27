@@ -1,4 +1,4 @@
-[← Back to Cheat Sheet](/README.md)
+[← Back to Cheat Sheet](/README.md#fraud-investigation-llm-application--cheat-sheet)
 
 # AZ8 — Business Rule Bypass Through Process Manipulation
 

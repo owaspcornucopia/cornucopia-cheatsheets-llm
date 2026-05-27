@@ -1,4 +1,4 @@
-[← Back to Cheat Sheet](/README.md)
+[← Back to Cheat Sheet](/README.md#fraud-investigation-llm-application--cheat-sheet)
 
 # LLM7 — Data and Model Poisoning via Untrusted Fine-Tuned Adapter
 

@@ -1,4 +1,4 @@
-[← Back to Cheat Sheet](/README.md)
+[← Back to Cheat Sheet](/README.md#fraud-investigation-llm-application--cheat-sheet)
 
 # LLM5 — Privilege Escalation Due to Weak Auth and No Tenant Isolation
 
