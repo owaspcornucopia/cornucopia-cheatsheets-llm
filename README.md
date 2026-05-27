@@ -1,5 +1,11 @@
 # PwnedNext - LLM App
 
+## High-Level Architecture of AI Anti-Fraud 3.0
+
+![Architecture sequence diagram](architecture-sequence-diagram.svg)
+
+![Threat model](ThreatDragonModels/threatmodel.png)
+
 ## Fraud Investigation LLM Application — Cheat Sheet
 
 Applicable threats for the LLM-based fraud investigation API. Each entry links to a page explaining how the threat manifests in this application and what mitigations are needed.
