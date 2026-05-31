@@ -24,7 +24,7 @@ A token belonging to "NFT trader 5000" is compromised in a data breach on their 
 
 ## Mitigations
 
-1. **Implement token expiration** — tokens should have a maximum lifetime (e.g., 90 days) after which they must be renewed.
+1. **Implement token expiration** — tokens should have a maximum lifetime (e.g., 30 days, but the shorter the better) after which they must be renewed.
 2. **Provide a revocation mechanism** — administrators should be able to invalidate a specific token immediately without redeploying.
 3. **Implement token rotation** — issue new tokens periodically and retire old ones.
 4. **Add idle timeout** — tokens unused for a defined period should be automatically invalidated.
