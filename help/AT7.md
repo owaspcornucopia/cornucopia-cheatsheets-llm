@@ -2,11 +2,11 @@
 
 # AT7 — No Protection Against Brute Force Attacks
 
-## Threat
-
-An attacker can use brute force or dictionary attacks against authentication without limit.
-
 ## Non-Applicable
+
+This threat does not apply to this application.
+
+## Reasoning
 
 The application's token validation is a simple list membership check with no protective mechanisms:
 
