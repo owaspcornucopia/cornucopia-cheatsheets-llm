@@ -20,7 +20,7 @@ But the tokens are UUIDs (128-bit), making pure brute force impractical. An atta
 
 ## Example Attack
 
-An attacker, knowing the default API key, uses it, which gives him unauthorised access because the system doesn't require the user to set a new API key when it's installed.
+An attacker writes a script that sends requests with sequential or random UUIDs in the token header. The attacker would need to know certain token characters from logs or error messages for the attack to be effective.
 
 ## Mitigations
 
