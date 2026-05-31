@@ -12,7 +12,6 @@ The API tokens have multiple exposure vectors:
 
 - **At rest**: Tokens are stored as plaintext strings in the application source code (see also CRJ)
 - **In transit**: The application listens on HTTP (port 9000) without TLS. Tokens sent in the `token` header travel over the network in plaintext
-- **In memory**: Tokens are loaded into application memory as a Python list, accessible to anyone who can inspect the process
 - **In version control**: Tokens are committed to the git repository, preserved in history permanently
 
 An attacker on the same network can capture tokens by sniffing HTTP traffic. The Docker Compose configuration exposes port 9000 directly with no TLS termination.
