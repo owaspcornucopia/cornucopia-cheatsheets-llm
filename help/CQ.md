@@ -2,19 +2,26 @@
 
 # CQ — No Real-Time Detection of Malicious Actions
 
-## Non-Applicable
+## Threat
 
-This threat does not apply to this application.
+Jim can undertake malicious, non-normal actions without real-time detection and response by the application
 
-## Reasoning
+## How this is applicable
 
 The CQ card describes undertaking malicious, non-normal actions without real-time detection and response by the application.
 
-While the absence of detection is valid for this application, it is already comprehensively covered by the Ace (A) cards in each suit:
+The absence of detection is valid; it is comprehensively covered by the Ace (A) cards in each suit:
 
-- VEA — no detection of input validation attacks
-- ATA — no detection of authentication attacks
-- SMA — no detection of session attacks
-- AZA — no detection of authorization bypass
+- [VEA](/help/VEA.md) — no detection of input validation attacks
+- [ATA](/help/ATA.md) — no detection of authentication attacks
+- [SMA](/help/SMA.md) — no detection of session attacks
+- [AZA](/help/AZA.md) — no detection of authorisation bypass
 
-The underlying issue (no monitoring, no alerting, no detection capability) is the same. CQ would add redundant coverage without providing additional insight or mitigations beyond what those four cards already specify.
+## Mitigations
+
+See mitigations covered by the other cards:
+
+- [VEA](/help/VEA.md) — Input Validation
+- [ATA](/help/ATA.md) — Authentication
+- [SMA](/help/SMA.md) — Session Management
+- [AZA](/help/AZA.md) — Authorisation
