@@ -16,7 +16,7 @@ The application's token validation is a simple list membership check with no pro
 - No CAPTCHA or proof-of-work requirement
 - No alerting on repeated failed attempts
 
-The tokens are UUIDs (128-bit), making pure brute force impractical. However, an attacker with partial knowledge (e.g., they know the format is UUID v4) combined with information leaks (e.g., knowing some token characters from logs or error messages) could significantly reduce the search space. More practically, an attacker could try common or default API keys without any throttling.
+But the tokens are UUIDs (128-bit), making pure brute force impractical. An attacker with partial knowledge (e.g., they know the format is UUID v4) combined with information leaks (e.g., knowing some token characters from logs or error messages) could significantly reduce the search space, but it's more likely, in this case, that the token would be revealed in its entirety. In this case, it's more practical to just try common or default API keys.
 
 ## Example Attack
 
