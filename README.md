@@ -79,6 +79,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 | Value | Applicable | Threat | Details |
 |----|------------|--------|---------|
 | 2 | true | Dangerous programming patterns — direct SQL execution, `ast.literal_eval()` on untrusted input | [C2](help/C2.md) |
+| 5 | false | Internal API, no public trust to manipulate | [C5](help/C5.md) |
 | 6 | true | Error handling is inconsistent, leaks information, and returns wrong HTTP status codes | [C6](help/C6.md) |
 | 7 | true | Audit trail absence as covered by Ace cards | [C7](help/C7.md) |
 | 8 | true | Infrastructure not hardened — container has no security restrictions | [C8](help/C8.md) |
@@ -182,7 +183,6 @@ The following threats were assessed and determined not applicable to this applic
 |----|------------|--------|---------|
 | 3 | false | No client-side binaries to decompile | [C3](help/C3.md) |
 | 4 | false | Non-repudiation not relevant (read-only fraud queries) | [C4](help/C4.md) |
-| 5 | false | Internal API, no public trust to manipulate | [C5](help/C5.md) |
 | Ace | false | Creative/novel placeholder — not a specific threat | [CA](help/CA.md) |
 
 ### Wild Card
