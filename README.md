@@ -85,6 +85,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 | 9 | true | Race condition on startup when scaled; amplified concurrent requests against the single model service | [C9](help/C9.md) |
 | 10 | true | Vulnerable third-party dependencies in requirements.txt | [CX](help/CX.md) |
 | Jack | true | No operational security documentation — insecure defaults ship without guidance | [CJ](help/CJ.md) |
+| Queen | false | Real-time detection absence covered by Ace cards | [CQ](help/CQ.md) |
 | King | true | Denial of service via SQL injection (DROP TABLE, DELETE, resource exhaustion) | [CK](help/CK.md) |
 
 ## Large Language Models
@@ -182,7 +183,6 @@ The following threats were assessed and determined not applicable to this applic
 | 3 | false | No client-side binaries to decompile | [C3](help/C3.md) |
 | 4 | false | Non-repudiation not relevant (read-only fraud queries) | [C4](help/C4.md) |
 | 5 | false | Internal API, no public trust to manipulate | [C5](help/C5.md) |
-| Queen | false | Real-time detection absence covered by Ace cards | [CQ](help/CQ.md) |
 | Ace | false | Creative/novel placeholder — not a specific threat | [CA](help/CA.md) |
 
 ### Wild Card
