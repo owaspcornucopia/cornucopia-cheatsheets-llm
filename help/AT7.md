@@ -20,7 +20,7 @@ The tokens are UUIDs (128-bit), making pure brute force impractical. However, an
 
 ## Example Attack
 
-An attacker, knowing the default API key, uses it, which gives him unauthenticated access because the system doesn't require the user to set a new API key when it's installed.
+An attacker, knowing the default API key, uses it, which gives him unauthorised access because the system doesn't require the user to set a new API key when it's installed.
 
 ## Mitigations
 
@@ -29,3 +29,4 @@ An attacker, knowing the default API key, uses it, which gives him unauthenticat
 3. **Move authentication to the entry point** so failed attempts are rejected immediately without consuming inference resources.
 4. **Consider IP-based blocking** for sources generating excessive failed authentication requests.
 5. **Log all authentication failures** with source IP and timestamp for forensic analysis.
+6. **No default keys** Ensure the system doesn't use default or test credentials that could lead to unauthorised access.
