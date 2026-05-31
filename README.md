@@ -33,7 +33,6 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 | 3 | true | Tokens exposed in transit (no TLS) and at rest (plaintext in code) | [AT3](help/AT3.md) |
 | 5 | true | Hardcoded debug and backdoor tokens present in source code | [AT5](help/AT5.md) |
 | 6 | true | Static tokens never expire, cannot be rotated or revoked | [AT6](help/AT6.md) |
-| 7 | true | No brute force protection — unlimited failed attempts allowed | [AT7](help/AT7.md) |
 | 10 | true | No centralized authentication framework — hand-written list check | [ATX](help/ATX.md) |
 | Jack | true | Token check happens inside the tool function, not at the API endpoint | [ATJ](help/ATJ.md) |
 | Ace | true | No logging to detect authentication attacks or token misuse | [ATA](help/ATA.md) |
@@ -137,6 +136,7 @@ The following threats were assessed and determined not applicable to this applic
 | Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 4 | false | No password/credential storage (tokens are hardcoded, not user-managed) | [AT4](help/AT4.md) |
+| 7 | false | No brute force protection — unlimited failed attempts allowed | [AT7](help/AT7.md) |
 | 8 | false | No password change/reset functionality | [AT8](help/AT8.md) |
 | 9 | false | No multi-factor authentication to bypass | [AT9](help/AT9.md) |
 | Queen | false | No credential recovery mechanism | [ATQ](help/ATQ.md) |
