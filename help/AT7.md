@@ -20,7 +20,7 @@ The tokens are UUIDs (128-bit), making pure brute force impractical. However, an
 
 ## Example Attack
 
-An attacker writes a script that sends requests with sequential or random UUIDs in the token header. The application processes each request, performs LLM inference (consuming resources), and only checks the token at query execution time. There is no lockout, no alerting, and no slowdown regardless of how many invalid tokens are tried.
+An attacker, knowing the default API key, uses it, which gives him unauthenticated access because the system doesn't require the user to set a new API key when it's installed.
 
 ## Mitigations
 
