@@ -6,7 +6,7 @@
 
 An attacker can use brute force or dictionary attacks against authentication without limit.
 
-## How This Applies
+## Non-Applicable
 
 The application's token validation is a simple list membership check with no protective mechanisms:
 
