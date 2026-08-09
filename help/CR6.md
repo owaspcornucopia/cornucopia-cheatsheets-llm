@@ -8,7 +8,7 @@ An attacker can read and modify unencrypted data in transit including credential
 
 ## How This Applies
 
-[Both implementations](#implementations) serve plain HTTP on port 9000. All data flows between clients and the API are unencrypted:
+[All three implementations](#implementations) serve plain HTTP on port 9000. All data flows between clients and the API are unencrypted:
 
 - **Authentication tokens** travel in the `token` HTTP header in plaintext
 - **Investigation questions** (which may reference real people) are transmitted in cleartext
@@ -33,3 +33,4 @@ An attacker performs ARP spoofing on the network segment where the application r
 
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
+- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)

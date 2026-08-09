@@ -14,7 +14,7 @@ The application has no logging of authorization-related events:
 - No logging of cross-tenant data access attempts
 - No monitoring of SQL queries that access data outside a token's expected scope
 - No alerting on unusual data access patterns
-- [Neither implementation](#implementations) records authorization decisions or database access by token
+- [None of the three implementations](#implementations) records authorization decisions or database access by token
 
 If an attacker discovers a way to access data they shouldn't (through SQL injection, token misuse, or any other method), there is no detection mechanism. The application is completely blind to authorization violations.
 
@@ -34,3 +34,4 @@ An attacker systematically exfiltrates all investigation records over several we
 
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
+- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
