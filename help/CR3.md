@@ -8,7 +8,7 @@ An attacker can alter service-to-service data because the application does not a
 
 ## How This Applies
 
-[All three implementations](#implementations) use an internal HTTP channel between the API service and the model service. This channel carries:
+[All four implementations](#implementations) use an internal HTTP channel between the API service and the model service. This channel carries:
 
 - **API service → model service**: Full conversation messages including the system prompt and the user's question. An attacker who can intercept this traffic can replace or modify the system prompt or inject arbitrary instructions.
 - **Model service → API service**: The LLM-generated SQL query. An attacker who can modify this response can substitute a destructive or data-exfiltrating query before it is executed.
@@ -46,7 +46,7 @@ networks:
 Place only `app` and `model` on the `backend` network. This does not prevent a compromised `app` container from attacking `model`, but it significantly reduces the attack surface.
 
 ### 4. Do Not Pass Raw User Input to the Internal Service
-Ensure the messages sent to the model service are constructed server-side and never echo raw user input as a system message. In [all three implementations](#implementations), the question is currently placed in a user-role message rather than a system-role message.
+Ensure the messages sent to the model service are constructed server-side and never echo raw user input as a system message. In [all four implementations](#implementations), the question is currently placed in a user-role message rather than a system-role message.
 
 ## References
 - [OWASP ASVS 13.4.1, 13.4.2, 13.4.3](https://owasp.org/www-project-application-security-verification-standard/)
@@ -59,3 +59,4 @@ Ensure the messages sent to the model service are constructed server-side and ne
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

@@ -15,7 +15,7 @@ While SQLite does not support stored procedures or direct OS command execution, 
 - **Application-level escalation**: A successfully injected query could modify application state in ways that lead to further exploitation
 - **Chained exploits**: Information gained from SQL injection (e.g., file paths, configuration) could enable other attack vectors
 
-The database runs within the same process as the API application with no privilege separation. In [all three implementations](#implementations), SQLite extensions can be loaded through the query path, so capabilities exposed by the SQLite library are reachable through the injection point. The [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) extracts `load_extension()` calls from model-generated SQL and passes their paths to the native database driver.
+The database runs within the same process as the API application with no privilege separation. In [all four implementations](#implementations), SQLite extensions can be loaded through the query path, so capabilities exposed by the SQLite library are reachable through the injection point. The [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) extracts `load_extension()` calls from model-generated SQL and passes their paths to the native database driver; the [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java) extracts the same calls and passes their paths to `System.load` before executing the remaining SQL.
 
 ## Example Attack
 
@@ -34,3 +34,4 @@ An attacker uses prompt injection to generate SQL that calls `load_extension('/t
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

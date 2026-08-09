@@ -11,7 +11,7 @@ An attacker can bypass input or output validation because failures are not rejec
 The application has no input validation at all on the `question` parameter beyond checking it is non-empty. There is no validation step that could fail because no validation exists. Additionally:
 
 - When the LLM produces invalid output (not matching the expected JSON tool call format), the application attempts multiple fallback parsing strategies instead of rejecting the response
-- [All three implementations](#implementations) progressively loosen their parser: the [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) accepts Python literal syntax, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) normalizes malformed JSON, extracts a query with regular expressions, or accepts remaining output as SQL, and the [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) accepts raw SQL when JSON parsing does not produce a tool call
+- [All four implementations](#implementations) progressively loosen their parser: the [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) accepts Python literal syntax, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) normalizes malformed JSON, extracts a query with regular expressions, or accepts remaining output as SQL, and the [TypeScript](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) and [Java](https://github.com/owaspcornucopia/llm-companion-scenario-java) implementations accept raw SQL when JSON parsing does not produce a tool call
 - Even if the LLM output is clearly malformed, the application attempts to salvage something usable from it
 
 This "try harder" approach means that borderline malicious outputs that would be caught by strict parsing get through via fallback paths.
@@ -32,3 +32,4 @@ An attacker crafts a prompt injection that produces output the strict JSON parse
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

@@ -8,7 +8,7 @@ An attacker can override or manipulate the system prompt through crafted input, 
 
 ## How This Applies
 
-[All three implementations](#implementations) place the user's question directly into the conversation alongside the system prompt with no effective isolation:
+[All four implementations](#implementations) place the user's question directly into the conversation alongside the system prompt with no effective isolation:
 
 ```
 messages = [
@@ -24,7 +24,7 @@ An attacker can craft a question that instructs the model to ignore the system p
 - Produce any output format, bypassing the JSON tool call constraint
 - Return misinformation about fraud status
 
-[None of the three implementations](#implementations) adds an independent prompt-injection defense. The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) adapter, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) base model, and the [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) adapter configuration are unverified artifacts, so none of their resistance to prompt injection should be assumed.
+[None of the four implementations](#implementations) adds an independent prompt-injection defense. The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) adapter, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) base model, the [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) adapter configuration, and the [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java) base-model and LoRA GGUF artifacts are unverified, so none of their resistance to prompt injection should be assumed.
 
 ## Example Attack
 
@@ -46,3 +46,4 @@ If the model follows these injected instructions, the attacker can exfiltrate th
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

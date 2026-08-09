@@ -8,14 +8,14 @@ An attacker can poison training or fine-tuning datasets, model artifacts, or the
 
 ## How This Applies
 
-[All three implementations](#implementations) download model artifacts from HuggingFace without pinning a revision or verifying their integrity. The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) downloads the Apertus-8B base model and the `pwnednext` fine-tuned LoRA adapter. The [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) downloads the Phi-3 ONNX base model. The [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) downloads the TinyLlama base model and the `pwnednext-tinyllama-lora-sql-adapter`. Critical concerns:
+[All four implementations](#implementations) download model artifacts from HuggingFace without pinning a revision or verifying their integrity. The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) downloads the Apertus-8B base model and the `pwnednext` fine-tuned LoRA adapter. The [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) downloads the Phi-3 ONNX base model. The [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) downloads the TinyLlama base model and the `pwnednext-tinyllama-lora-sql-adapter`. The [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java) downloads the same TinyLlama base model and adapter, then converts both to GGUF before loading them. Critical concerns:
 
 - The artifacts are obtained from a mutable HuggingFace repository state without checksums or cryptographic signatures
-- [None of the three implementations](#implementations) verifies a trusted model revision before loading the downloaded files
+- [None of the four implementations](#implementations) verifies a trusted model revision before loading the downloaded files
 - A compromise in the model's training, fine-tuning, publishing, or delivery path could introduce a backdoor
 - A poisoned base model or adapter could cause malicious SQL generation, data leakage, or deliberately incorrect fraud assessments
 
-The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) adapter can carry fine-tuning-related poisoning, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) base model can carry poisoning introduced during its original training or subsequent publication, and the [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) trusts adapter configuration to decide whether injected tool calls are honored. In [any of the three implementations](#implementations), a compromised artifact can change the application's behavior.
+The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) adapter can carry fine-tuning-related poisoning, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) base model can carry poisoning introduced during its original training or subsequent publication, the [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) trusts adapter configuration to decide whether injected tool calls are honored, and the [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java) loads the converted base model and LoRA adapter together through `ModelParameters.addLoraAdapter(...)`. In [any of the four implementations](#implementations), a compromised artifact can change the application's behavior.
 
 ## Example Attack
 
@@ -35,3 +35,4 @@ A model artifact is published with a backdoor: whenever a question mentions a sp
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

@@ -8,7 +8,7 @@ An attacker can read authentication credentials because they are stored unencryp
 
 ## How This Applies
 
-[All three implementations](#implementations) hardcode plaintext UUID tokens in application source code. These tokens are the sole authentication mechanism for the API. Anyone with access to the source code — including:
+[All four implementations](#implementations) hardcode plaintext UUID tokens in application source code. These tokens are the sole authentication mechanism for the API. Anyone with access to the source code — including:
 
 - Developers on the team
 - CI/CD systems
@@ -18,7 +18,7 @@ An attacker can read authentication credentials because they are stored unencryp
 
 — can extract all valid tokens and impersonate any API consumer.
 
-The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) Compose configuration mounts its source file into the container, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) embeds the tokens in its published assembly, and the [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) copies its source into the container image. In [any of the three implementations](#implementations), the token values exist in plaintext on the host or in deployable artifacts.
+The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) Compose configuration mounts its source file into the container, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) embeds the tokens in its published assembly, the [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) copies its source into the container image, and the [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java) embeds the token collection in its published JAR. In [any of the four implementations](#implementations), the token values exist in plaintext on the host or in deployable artifacts.
 
 ## Example Attack
 
@@ -37,3 +37,4 @@ An attacker gains read access to the git repository (through a leaked `.git` dir
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

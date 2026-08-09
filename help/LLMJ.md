@@ -8,11 +8,12 @@ An attacker can introduce compromised third-party models or ML components into t
 
 ## How This Applies
 
-[All three implementations](#implementations) download model artifacts from HuggingFace without pinning a revision or verifying checksums:
+[All four implementations](#implementations) download model artifacts from HuggingFace without pinning a revision or verifying checksums:
 
 - The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) downloads the `swiss-ai/Apertus-8B-Instruct-2509` base model and the `steephole5586/pwnednext` fine-tuned LoRA adapter.
 - The [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) downloads the `microsoft/Phi-3-mini-4k-instruct-onnx` base ONNX model.
 - The [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) downloads the `TinyLlama/TinyLlama-1.1B-Chat-v1.0` base model and the `pwnednext-tinyllama-lora-sql-adapter` adapter.
+- The [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java) downloads the `TinyLlama/TinyLlama-1.1B-Chat-v1.0` base model and the `pwnednext-tinyllama-lora-sql-adapter`, then converts them to GGUF artifacts.
 
 The artifact download is performed before the services start, either by a Compose downloader or by the .NET model-preparation utility.
 
@@ -22,7 +23,7 @@ There is no verification of:
 - Whether the model has been modified since initial selection
 - Whether the model or adapter was trained on legitimate data
 
-The only local check is whether a configuration file already exists, to avoid re-downloading. If a HuggingFace repository is compromised or replaced, [any of the three implementations](#implementations) can download and execute a malicious model artifact.
+The only local check is whether a configuration file already exists, to avoid re-downloading. If a HuggingFace repository is compromised or replaced, [any of the four implementations](#implementations) can download and execute a malicious model artifact.
 
 ## Example Attack
 
@@ -34,7 +35,7 @@ An attacker compromises a model publisher account and publishes a model artifact
 2. **Verify checksums** of all downloaded model files against known-good values.
 3. **Mirror model files in a private, controlled registry** rather than pulling directly from public repositories at deployment time.
 4. **Audit model publishers** — verify the identity and trustworthiness of every model and adapter publisher before use.
-5. **Scan model artifacts** for known malicious patterns appropriate to their format, including PyTorch, ONNX, and SafeTensors artifacts.
+5. **Scan model artifacts** for known malicious patterns appropriate to their format, including PyTorch, ONNX, SafeTensors, and GGUF artifacts.
 6. **Implement an approval process** for model updates — changes to the model version should require security review before deployment.
 
 ## Implementations
@@ -42,3 +43,4 @@ An attacker compromises a model publisher account and publishes a model artifact
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

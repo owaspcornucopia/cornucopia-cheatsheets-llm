@@ -8,7 +8,7 @@ An attacker can bypass session management because the controls are self-built an
 
 ## How This Applies
 
-[All three implementations](#implementations) implement session/token management as a hardcoded in-memory token collection.
+[All four implementations](#implementations) implement session/token management as a hardcoded in-memory token collection.
 
 This is not session management — it is a static list comparison. It provides none of the properties a proper session management system would:
 
@@ -37,3 +37,4 @@ Because there is no session state, the application cannot distinguish between a 
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

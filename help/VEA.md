@@ -8,7 +8,7 @@ Novel or unknown attacks against data validation and encoding go undetected beca
 
 ## How This Applies
 
-The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) disables framework request logging, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) records parser failures but does not provide complete input-security monitoring, and the [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) has no application-level request or input-security logging. [None of the three implementations](#implementations) provides security logging for:
+The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) disables framework request logging, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) records parser failures but does not provide complete input-security monitoring, and the [TypeScript](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) and [Java](https://github.com/owaspcornucopia/llm-companion-scenario-java) implementations have no application-level request or input-security logging. [None of the four implementations](#implementations) provides security logging for:
 
 - Unusual or malicious input patterns
 - Failed parsing attempts (which may indicate injection attempts)
@@ -35,3 +35,4 @@ An attacker spends weeks probing the API with increasingly sophisticated prompt 
 - [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
 - [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)
