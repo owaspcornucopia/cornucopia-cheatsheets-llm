@@ -8,7 +8,7 @@ An attacker can access resources or services because authentication is not enfor
 
 ## How This Applies
 
-The authentication check (token validation) is performed inside the `investigation_fraud()` function — the database query tool — rather than at the API endpoint level. This creates several problems:
+The authentication check (token validation) is performed inside the database-query workflow rather than at the API endpoint level. This creates several problems:
 
 1. The `/api/fraud` endpoint itself does not check authentication. The LLM inference (which is computationally expensive) runs before any token check occurs.
 2. An unauthenticated attacker can trigger model inference, consuming GPU/CPU resources, without ever providing a valid token.
@@ -22,7 +22,7 @@ An attacker without any token sends thousands of requests to `/api/fraud`. Each 
 
 ## Mitigations
 
-1. **Move authentication to the API endpoint level.** Check the token at the beginning of the `investigate_transaction()` route handler, before any processing occurs.
-2. **Use a Flask middleware or decorator** (e.g., `@require_auth`) to enforce authentication consistently across all endpoints.
+1. **Move authentication to the API endpoint level.** Check the token at the beginning of the fraud endpoint handler, before any processing occurs.
+2. **Use middleware, endpoint filters, or an API gateway** to enforce authentication consistently across all endpoints.
 3. **Fail early** — reject unauthenticated requests immediately with a 401 response before any business logic runs.
 4. **Document authentication requirements** clearly so that future developers know where and how authentication is enforced.

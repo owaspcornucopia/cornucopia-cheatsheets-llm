@@ -12,4 +12,4 @@ The CRK card describes influencing or altering cryptography code/routines (encry
 
 This application does not implement any cryptographic routines. There is no encryption code, no hashing code (for security purposes), no digital signature verification, and no random number generation within the application. Since no crypto code exists, there is nothing to alter or bypass.
 
-The application does use PyTorch and transformers libraries which internally use cryptographic functions, but these are for ML operations (model loading, tensor computation) — not for application-level security controls that an attacker would want to bypass.
+The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) uses PyTorch and transformers libraries which internally use cryptographic functions, but these are for ML operations (model loading, tensor computation) — not for application-level security controls that an attacker would want to bypass.

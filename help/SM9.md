@@ -10,8 +10,8 @@ An attacker can steal session tokens because they are sent over insecure channel
 
 The application transmits authentication tokens insecurely in multiple ways:
 
-- **No TLS**: The Flask application serves HTTP on port 9000 without encryption. The `token` header travels in plaintext over the network.
-- **Docker Compose exposes port directly**: `ports: "9000:9000"` maps the container port to the host with no TLS proxy in front.
+- **No TLS**: [Both implementations](#implementations) serve HTTP on port 9000 without encryption. The `token` header travels in plaintext over the network.
+- **Docker Compose exposes port directly**: the public HTTP port is mapped to the host with no TLS proxy in front.
 - **No secure transport requirement**: The application does not reject requests arriving over unencrypted connections.
 
 Anyone with network access between the client and the server (same LAN, ISP, cloud network segment, or through a man-in-the-middle position) can read the token from captured traffic.
@@ -27,3 +27,8 @@ The application is deployed in a cloud environment. Another container on the sam
 3. **Use encrypted overlay networks** in container deployments to protect east-west traffic.
 4. **Mark tokens as sensitive** in logging configuration to prevent accidental logging.
 5. **Never include tokens in URLs** — use headers or request bodies only.
+
+## Implementations
+
+- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
+- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)

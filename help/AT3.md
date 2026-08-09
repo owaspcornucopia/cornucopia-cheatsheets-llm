@@ -22,7 +22,7 @@ An attacker on the same network segment as the application (or between the clien
 
 ## Mitigations
 
-1. **Enable TLS** — serve the API over HTTPS only. Add a reverse proxy (nginx, Caddy) with TLS termination in front of the Flask application.
+1. **Enable TLS** — serve the API over HTTPS only. Add a reverse proxy (nginx, Caddy) with TLS termination in front of the application.
 2. **Never store tokens in source code** — use a secrets manager or environment variables.
 3. **Encrypt tokens at rest** — if they must be stored locally, hash them or use an encrypted vault.
 4. **Use short-lived tokens** with refresh mechanisms so that intercepted tokens expire quickly.

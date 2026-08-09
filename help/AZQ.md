@@ -15,7 +15,7 @@ While SQLite does not support stored procedures or direct OS command execution, 
 - **Application-level escalation**: A successfully injected query could modify application state in ways that lead to further exploitation
 - **Chained exploits**: Information gained from SQL injection (e.g., file paths, configuration) could enable other attack vectors
 
-The database runs within the same process as the Flask application with no privilege separation. Any capability available to the SQLite library is accessible through the injection point.
+The database runs within the same process as the API application with no privilege separation. In [both implementations](#implementations), SQLite extensions are enabled at startup, so capabilities exposed by the SQLite library are reachable through the injection point.
 
 ## Example Attack
 
@@ -23,8 +23,13 @@ An attacker uses prompt injection to generate SQL that calls `load_extension('/t
 
 ## Mitigations
 
-1. **Disable SQLite loadable extensions** — call `conn.enable_load_extension(False)` explicitly.
+1. **Disable SQLite loadable extensions** using the appropriate database-driver configuration.
 2. **Run the database in a restricted mode** — use SQLite's authorizer callback to restrict available operations.
 3. **Use a read-only database connection** to prevent write-based escalation paths.
 4. **Implement process isolation** — run the database in a separate container with minimal filesystem access.
 5. **Apply the principle of least privilege** to the container — remove unnecessary capabilities, use a non-root user, mount the filesystem read-only where possible.
+
+## Implementations
+
+- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
+- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)

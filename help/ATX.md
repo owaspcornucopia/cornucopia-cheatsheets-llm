@@ -8,12 +8,7 @@ An attacker can bypass authentication because the application does not use a cen
 
 ## How This Applies
 
-Authentication in this application is a single `in` operator check against a hardcoded Python list:
-
-```
-if not request.headers.get('token') in allowed_tokens:
-    abort(401)
-```
+[Both implementations](#implementations) authenticate by comparing the request `token` header against a hardcoded in-memory token collection.
 
 This is not a proper authentication framework. It provides:
 
@@ -32,8 +27,13 @@ A new endpoint is added to the application but the developer forgets to include 
 
 ## Mitigations
 
-1. **Adopt a standard authentication framework** — use Flask-Login, Flask-JWT-Extended, or an API gateway that handles authentication centrally.
+1. **Adopt a standard authentication solution** — use framework authentication middleware, a proven token-validation library, or an API gateway that handles authentication centrally.
 2. **Enforce authentication at the middleware level** so all endpoints are protected by default and exceptions must be explicitly declared.
 3. **Use a proven protocol** (OAuth 2.0, API keys via an API gateway) instead of hand-written token checking.
 4. **Apply the same authentication standard** across all current and future endpoints.
 5. **Test authentication enforcement** — automated tests should verify that all endpoints reject unauthenticated requests.
+
+## Implementations
+
+- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
+- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)

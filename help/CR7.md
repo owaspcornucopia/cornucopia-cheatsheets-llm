@@ -10,7 +10,7 @@ An attacker can intercept or modify data in transit because the transport protoc
 
 The application has no TLS configuration whatsoever:
 
-- Flask's development server is used in production (`app.run()`) with no TLS parameters
+- The public API is exposed over HTTP with no TLS configuration
 - No certificate is configured
 - No cipher suite selection is made
 - No protocol version is enforced

@@ -8,13 +8,13 @@ An attacker can influence or alter authorization controls and permissions, and c
 
 ## How This Applies
 
-The only authorization check in the application is the token list membership test. Through SQL injection, an attacker cannot directly modify the Python code, but they can:
+The only authorization check in the application is the token list membership test. Through SQL injection, an attacker cannot directly modify the application code, but they can:
 
 - **Alter the data that drives decisions** — if the application's behavior depends on database state, SQL injection can change that state
 - **Create new data paths** — inject records that cause the LLM to produce different (potentially dangerous) SQL in future queries
 - **Undermine data integrity** — if authorization decisions downstream depend on investigation data, corrupting that data effectively bypasses authorization
 
-More broadly, because the authorization control is a simple list check in Python code, anyone with access to the source code (which contains plaintext tokens) can add their own token and effectively grant themselves access.
+More broadly, because the authorization control is a simple list check in application source code, anyone with source access can add their own token and effectively grant themselves access.
 
 ## Example Attack
 

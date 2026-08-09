@@ -8,7 +8,7 @@ An attacker can override or manipulate the system prompt through crafted input, 
 
 ## How This Applies
 
-The user's question is placed directly into the conversation alongside the system prompt with no separation or protection:
+[Both implementations](#implementations) place the user's question directly into the conversation alongside the system prompt with no effective isolation:
 
 ```
 messages = [
@@ -24,7 +24,7 @@ An attacker can craft a question that instructs the model to ignore the system p
 - Produce any output format, bypassing the JSON tool call constraint
 - Return misinformation about fraud status
 
-The model's fine-tuning (via the pwnednext adapter) may or may not include defenses against prompt injection — and given the adapter's suspicious provenance, it may actually make the model more susceptible.
+[Neither implementation](#implementations) adds an independent prompt-injection defense. The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) adapter and the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) base model are both unverified artifacts, so neither model's resistance to prompt injection should be assumed.
 
 ## Example Attack
 
@@ -40,3 +40,8 @@ If the model follows these injected instructions, the attacker can exfiltrate th
 4. **Use delimiters and instruction hierarchy** — structure prompts so the model can distinguish between system instructions and user data.
 5. **Limit the model's capabilities** — even if prompt injection succeeds, other controls (read-only DB, query allowlisting) should limit the damage.
 6. **Monitor for injection attempts** — log and alert when inputs contain suspicious patterns, enabling incident response.
+
+## Implementations
+
+- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
+- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)

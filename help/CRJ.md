@@ -8,17 +8,17 @@ An attacker can read authentication credentials because they are stored unencryp
 
 ## How This Applies
 
-The `allowed_tokens` list is hardcoded directly in `app.py` as plaintext UUID strings. These tokens are the sole authentication mechanism for the API. Anyone with access to the source code — including:
+[Both implementations](#implementations) hardcode plaintext UUID tokens in application source code. These tokens are the sole authentication mechanism for the API. Anyone with access to the source code — including:
 
 - Developers on the team
 - CI/CD systems
 - Version control history (git)
-- Container images (the Dockerfile copies `app.py` into the image)
+- Container images that contain the compiled or copied application
 - Anyone who compromises the running container
 
 — can extract all valid tokens and impersonate any API consumer.
 
-The tokens are also mounted as a volume in the Docker Compose configuration (`./app.py:/application/app.py`), meaning they exist in plaintext on the host filesystem.
+The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) Compose configuration mounts its source file into the container, and the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) embeds the tokens in its published assembly. In [either implementation](#implementations), the token values exist in plaintext on the host or in deployable artifacts.
 
 ## Example Attack
 
@@ -31,3 +31,8 @@ An attacker gains read access to the git repository (through a leaked `.git` dir
 3. **Rotate all existing tokens** since they have been exposed in source code and should be considered compromised.
 4. **Hash stored tokens** — if tokens must be stored locally, store only their cryptographic hashes and compare incoming tokens against the hashes.
 5. **Use a proper authentication system** (OAuth 2.0, API key management service) instead of static tokens.
+
+## Implementations
+
+- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
+- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)

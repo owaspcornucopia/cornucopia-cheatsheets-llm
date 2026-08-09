@@ -13,7 +13,7 @@ The application is deployed without operational security documentation:
 - **No security configuration guide** — there is no documentation on how to deploy securely (TLS setup, token management, network configuration)
 - **No operational runbook** — no guidance on monitoring, alerting, or incident response
 - **No hardening checklist** — the Docker/infrastructure configuration ships with no security guidance
-- **Development server used in production** — Flask's built-in server (`app.run()`) is not suitable for production use
+- **Development-oriented defaults are deployed without hardening** — the [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) uses its framework server, while the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) exposes default HTTP hosting without TLS or security configuration
 - **Default configuration is insecure** — the application runs without TLS, with hardcoded tokens, and with logging disabled
 - **No security warnings** — the application does not warn operators when expected security features (TLS, proper auth) are not configured
 
@@ -27,7 +27,7 @@ An operations team deploys the application following the README and Docker Compo
 
 1. **Create a security deployment guide** documenting minimum security requirements (TLS, token management, network configuration).
 2. **Ship secure defaults** — the application should be secure out of the box, requiring explicit action to weaken security (not the reverse).
-3. **Use a production-grade WSGI server** (gunicorn, uvicorn) instead of Flask's development server.
+3. **Use production-grade hosting** with an explicitly configured reverse proxy, TLS, logging, and security headers.
 4. **Document operational requirements** — logging, monitoring, alerting, patching, and incident response procedures.
 5. **Add startup warnings** when the application detects insecure configuration (no TLS, hardcoded tokens, disabled logging).
 6. **Provide a hardening checklist** that operators can follow during deployment.
