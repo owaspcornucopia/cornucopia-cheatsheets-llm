@@ -2,26 +2,68 @@
 
 # LLM7 — Data and Model Poisoning via Untrusted Model Artifacts
 
+## Implementations
+
+- [Android implementation](#android-implementation)
+- [Python implementation](#python-implementation)
+- [.NET implementation](#net-implementation)
+- [TypeScript implementation](#typescript-implementation)
+- [Java implementation](#java-implementation)
+
 ## Threat
 
 An attacker can poison training or fine-tuning datasets, model artifacts, or the model release process, introducing backdoors or malicious behavior that activates during normal use.
 
 ## How This Applies
 
-[All four implementations](#implementations) download model artifacts from HuggingFace without pinning a revision or verifying their integrity. The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) downloads the Apertus-8B base model and the `pwnednext` fine-tuned LoRA adapter. The [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) downloads the Phi-3 ONNX base model. The [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) downloads the TinyLlama base model and the `pwnednext-tinyllama-lora-sql-adapter`. The [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java) downloads the same TinyLlama base model and adapter, then converts both to GGUF before loading them. Critical concerns:
+### All implementations
+
+All four implementations download model artifacts from HuggingFace without pinning a revision or verifying their integrity. Critical concerns:
 
 - The artifacts are obtained from a mutable HuggingFace repository state without checksums or cryptographic signatures
-- [None of the four implementations](#implementations) verifies a trusted model revision before loading the downloaded files
+- None of the four implementations verifies a trusted model revision before loading the downloaded files
 - A compromise in the model's training, fine-tuning, publishing, or delivery path could introduce a backdoor
 - A poisoned base model or adapter could cause malicious SQL generation, data leakage, or deliberately incorrect fraud assessments
 
-The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) adapter can carry fine-tuning-related poisoning, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) base model can carry poisoning introduced during its original training or subsequent publication, the [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) trusts adapter configuration to decide whether injected tool calls are honored, and the [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java) loads the converted base model and LoRA adapter together through `ModelParameters.addLoraAdapter(...)`. In [any of the four implementations](#implementations), a compromised artifact can change the application's behavior.
+In any of the four implementations, a compromised artifact can change the application's behavior.
+
+### Python implementation
+
+The Python implementation downloads the Apertus-8B base model and the `pwnednext` fine-tuned LoRA adapter. The Python implementation adapter can carry fine-tuning-related poisoning.
+
+### .NET implementation
+
+The .NET implementation downloads the Phi-3 ONNX base model. The .NET implementation base model can carry poisoning introduced during its original training or subsequent publication.
+
+### TypeScript implementation
+
+The TypeScript implementation downloads the TinyLlama base model and the `pwnednext-tinyllama-lora-sql-adapter`. The TypeScript implementation trusts adapter configuration to decide whether injected tool calls are honored.
+
+### Java implementation
+
+The Java implementation downloads the same TinyLlama base model and adapter, then converts both to GGUF before loading them. The Java implementation loads the converted base model and LoRA adapter together through `ModelParameters.addLoraAdapter(...)`.
+
+### Android implementation
+
+[`scripts/download-model.ps1`](https://github.com/owaspcornucopia/llm-companion-scenario-android/blob/main/scripts/download-model.ps1)
+downloads the TinyLlama GGUF and optional text-to-SQL adapter from mutable
+Hugging Face `main` revisions without a pinned commit or checksum. The bridge
+loads those artifacts before the Android app sends questions, so a poisoned base
+model or adapter can create unsafe SQL or a misleading fraud answer.
 
 ## Example Attack
 
+### All implementations
+
 A model artifact is published with a backdoor: whenever a question mentions a specific name, the model generates SQL that always returns `fraud_detected = false` regardless of the actual data. This allows a specific fraudulent actor to evade detection through the investigation tool.
 
+### Android implementation
+
+Run the model smoke test after downloading.
+
 ## Mitigations
+
+### All implementations
 
 1. **Verify the provenance and integrity of all model artifacts** before deployment. Use cryptographic signatures or approved checksums to detect tampering.
 2. **Audit training and fine-tuning data** for poisoning attempts, biased labels, or injected patterns.
@@ -30,9 +72,6 @@ A model artifact is published with a backdoor: whenever a question mentions a sp
 5. **Implement separation of duties** for model training, approval, and deployment.
 6. **Maintain the ability to roll back** to a known-good model artifact if issues are detected.
 
-## Implementations
+### Android implementation
 
-- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
-- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
-- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
-- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)
+For the fix exercise, pin revisions, verify checksums/signatures, review model output against known SQL fixtures, and approve model updates before placing them in a `models/` directory.

@@ -19,3 +19,10 @@ This application does not use:
 - Policy engines that feed context to the model
 
 The application uses a simple SQLite database queried via LLM-generated SQL. The threat of poisoning database content that gets fed to the LLM is already covered by LLM9 (indirect prompt injection via database records). LLM6 specifically targets RAG/vector/MCP architectures which this application does not implement.
+
+## Android-specific scenario
+
+Not applicable to the native Android build. The app has SQLite rows and a
+two-stage model prompt, but no RAG index, vector store, MCP server, or retrieval
+knowledge source. Testers should use the Android-specific LLM9 card for
+poisoned database content instead.

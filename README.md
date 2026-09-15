@@ -12,6 +12,14 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 
 ---
 
+## Vulnerable apps
+
+- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
+- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
+- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
+- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)
+- [Android implementation](https://github.com/owaspcornucopia/llm-companion-scenario-android)
+
 ## Data Validation & Encoding
 
 | Value | Applicable | Threat | Details |
@@ -198,6 +206,91 @@ The following threats were assessed and determined not applicable to this applic
 |----|------------|--------|---------|
 | 6 | false | No RAG, vector DB, or MCP sources to poison | [LLM6](help/LLM6.md) |
 | Ace | false | Creative/novel placeholder — not a specific threat | [LLMA](help/LLMA.md) |
+
+## Android MobileApp Coverage
+
+The Android companion keeps the Java scenario's PwnedNext/F-Corp back story but
+replaces the web API with a native screen, local SQLite store, exported Android
+components, and an on-device llama.cpp model packaged in the single APK. An
+external model service and heuristic fallback are not available; inference runs
+only inside the Android process. See the
+[Android single-APK setup and README](../llm-companion-scenario-android/README.md)
+for the model download, native toolchain, and emulator commands. The Android
+data-flow and sequence diagrams are [documented in the Android repository](../llm-companion-scenario-android/docs/architecture.md).
+It implements **41 MobileApp Edition v2.0 cards**. Every applicable card has a help page with
+**Threat**, **How This Applies**, **Example Attack**, **Mitigations**, and OWASP
+[MASTG](https://mas.owasp.org/MASTG/) /
+[MASWE](https://mas.owasp.org/MASWE/) references.
+
+The shared LLM sections above remain applicable to the other companion projects.
+Each LLM help page keeps that shared guidance and adds a clearly labeled
+**Android-specific scenario**; Android notes do not replace cross-project facts.
+
+### Implemented MobileApp cards
+
+| Card | Applicable | Deliberate Android behavior | MASTG / MASWE mapping | Details |
+|---|---:|---|---|---|
+| [PC2](https://cornucopia.owasp.org/cards/PC2) | true | Visible SQL and rows are capturable in screenshots and recents previews. | TEST-0289--0294; BEST-0014, 0015, 0017, 0018, 0033; MASWE-0038, 0034 | [PC2 help](help/PC2.md) |
+| [PC3](https://cornucopia.owasp.org/cards/PC3) | true | Full unmasked results, clipboard export, and unnecessary component permissions expose data. | TEST-0316, 0320, 0346, 0347, 0378, 0390; MASWE-0036, 0001, 0034, 0066 | [PC3 help](help/PC3.md) |
+| [PC4](https://cornucopia.owasp.org/cards/PC4) | true | Location, camera, microphone, media, and notification permissions are declared without a feature need. | TEST-0254--0257, 0360--0363; MASWE-0066 | [PC4 help](help/PC4.md) |
+| [PC5](https://cornucopia.owasp.org/cards/PC5) | true | An exported receiver accepts attacker-controlled questions and approval extras. | TEST-0372, 0374, 0375; MASWE-0032, 0050 | [PC5 help](help/PC5.md) |
+| [PC6](https://cornucopia.owasp.org/cards/PC6) | true | Receiver and providers are exported without signature-level protection. | TEST-0364--0366, 0381; MASWE-0018, 0032 | [PC6 help](help/PC6.md) |
+| [PC7](https://cornucopia.owasp.org/cards/PC7) | true | Exported provider concatenates an external WHERE clause into raw SQLite. | TEST-0339, 0355--0357; MASWE-0050, 0018 | [PC7 help](help/PC7.md) |
+| [PC8](https://cornucopia.owasp.org/cards/PC8) | true | Exported file provider joins caller paths without canonical containment checks. | TEST-0357; MASWE-0018 | [PC8 help](help/PC8.md) |
+| [PC9](https://cornucopia.owasp.org/cards/PC9) | true | Broadcast extras and provider selections reach sensitive operations without a strict input schema. | MASTG/MASWE IPC validation review | [PC9 help](help/PC9.md) |
+| [PCQ](https://cornucopia.owasp.org/cards/PCQ) | true | Exported components accept attacker-controlled messages, queries, approval state, and paths. | MASTG/MASWE IPC review | [PCQ help](help/PCQ.md) |
+| [NS2](https://cornucopia.owasp.org/cards/NS2) | true | Questions, SQL, and rows are written to Logcat. | TEST-0203, 0231, 0296, 0297; MASWE-0005 | [NS2 help](help/NS2.md) |
+| [NS3](https://cornucopia.owasp.org/cards/NS3) | true | Complete investigation results are copied to a clipboard that is never cleared. | TEST-0258, 0276--0280, 0313, 0314; MASWE-0036 | [NS3 help](help/NS3.md) |
+| [NS4](https://cornucopia.owasp.org/cards/NS4) | true | Local SQLite and on-device model prompts expose transaction data inside the app process. | TEST-0206, 0315, 0318, 0319; MASWE-0073, 0037 | [NS4 help](help/NS4.md) |
+| [NS5](https://cornucopia.owasp.org/cards/NS5) | true | Backups remain enabled and the file provider can reach app-private paths. | TEST-0200, 0201, 0207, 0215, 0216, 0262, 0287, 0298, 0304--0306; MASWE-0002, 0001, 0006 | [NS5 help](help/NS5.md) |
+| [NS6](https://cornucopia.owasp.org/cards/NS6) | true | Reviews and approvals work without checking for a secure device lock or trusted device state. | MASTG/MASWE device-access review | [NS6 help](help/NS6.md) |
+| [NS7](https://cornucopia.owasp.org/cards/NS7) | true | Full prompts, SQL, rows, and memo values remain in activity memory. | KNOW-0051, 0103 | [NS7 help](help/NS7.md) |
+| [NS8](https://cornucopia.owasp.org/cards/NS8) | true | Last results and fraud overrides are stored in ordinary SharedPreferences. | TEST-0200, 0201, 0207, 0299--0306, 0338, 0387; MASWE-0002, 0001, 0057 | [NS8 help](help/NS8.md) |
+| [NS9](https://cornucopia.owasp.org/cards/NS9) | true | A restored or edited preference changes the visible fraud outcome. | TEST-0338, 0387; MASWE-0057 | [NS9 help](help/NS9.md) |
+| [AA2](https://cornucopia.owasp.org/cards/AA2) | true | High-value approval succeeds without fresh authentication or biometrics. | TEST-0266--0269; MASWE-0020, 0021 | [AA2 help](help/AA2.md) |
+| [AA7](https://cornucopia.owasp.org/cards/AA7) | true | Client-supplied authorization and replayed approval tokens can clear a transaction's `fraud_detected` flag. | TEST-0266, 0267, 0327, 0329, 0375; MASWE-0020, 0050 | [AA7 help](help/AA7.md) |
+| [AA8](https://cornucopia.owasp.org/cards/AA8) | true | Missing authorization state defaults to allow. | TEST-0266, 0267, 0327; MASWE-0020 | [AA8 help](help/AA8.md) |
+| [AA9](https://cornucopia.owasp.org/cards/AA9) | true | Activity, receiver, query provider, and file provider have broad access. | TEST-0250--0257, 0335, 0336, 0360--0363; MASWE-0034, 0066 | [AA9 help](help/AA9.md) |
+| [AAQ](https://cornucopia.owasp.org/cards/AAQ) | true | Intent extras and provider arguments reach investigation data without caller authorization. | MASTG/MASWE authorization and IPC review | [AAQ help](help/AAQ.md) |
+| [RS2](https://cornucopia.owasp.org/cards/RS2) | true | Verbose debug diagnostics remain in the production-shaped training build. | TEST-0263--0265, 0358, 0359; MASWE-0061 | [RS2 help](help/RS2.md) |
+| [RS3](https://cornucopia.owasp.org/cards/RS3) | true | Debug metadata, readable strings, and security-sensitive implementation details remain in the APK. | TEST-0219, 0288; MASWE-0061 | [RS3 help](help/RS3.md) |
+| [RS4](https://cornucopia.owasp.org/cards/RS4) | true | No package, model, installer, or restored-data integrity verification exists. | TEST-0220, 0224, 0225; MASWE-0075, 0056 | [RS4 help](help/RS4.md) |
+| [RS5](https://cornucopia.owasp.org/cards/RS5) | true | The debug APK is explicitly debuggable and runtime-inspectable. | TEST-0226, 0227, 0261; MASWE-0063 | [RS5 help](help/RS5.md) |
+| [RS7](https://cornucopia.owasp.org/cards/RS7) | true | Emulator and hostile-device detection is absent. | TEST-0351, 0367; MASWE-0054, 0053 | [RS7 help](help/RS7.md) |
+| [RS8](https://cornucopia.owasp.org/cards/RS8) | true | Sensitive Java and JNI operations run without runtime-instrumentation detection. | MASTG/MASWE resilience review | [RS8 help](help/RS8.md) |
+| [RS9](https://cornucopia.owasp.org/cards/RS9) | true | Minification is disabled, leaving readable classes, strings, SQL, and model assets. | MASTG/MASWE reverse-engineering review | [RS9 help](help/RS9.md) |
+| [RSJ](https://cornucopia.owasp.org/cards/RSJ) | true | Model files, preferences, and database state are trusted without authenticity checks. | MASTG/MASWE file-integrity review | [RSJ help](help/RSJ.md) |
+| [RSQ](https://cornucopia.owasp.org/cards/RSQ) | true | No runtime response protects model output, authorization helpers, or fraud decisions from hooks. | MASTG/MASWE runtime-integrity review | [RSQ help](help/RSQ.md) |
+| [RSX](https://cornucopia.owasp.org/cards/RSX) | true | Rooted, instrumented, and infected environments receive full functionality. | MASTG/MASWE platform-integrity review | [RSX help](help/RSX.md) |
+| [CRM2](https://cornucopia.owasp.org/cards/CRM2) | true | One hard-coded AES key and fixed IV are reused for different purposes. | TEST-0307, 0308; MASWE-0007 | [CRM2 help](help/CRM2.md) |
+| [CRM3](https://cornucopia.owasp.org/cards/CRM3) | true | Every encryption operation uses the same predictable IV. | MASTG/MASWE cryptography review | [CRM3 help](help/CRM3.md) |
+| [CRM4](https://cornucopia.owasp.org/cards/CRM4) | true | The AES key is a readable product string rather than random key material. | MASTG/MASWE key-generation review | [CRM4 help](help/CRM4.md) |
+| [CRM6](https://cornucopia.owasp.org/cards/CRM6) | true | AES-CBC ciphertext has no MAC or authenticated-encryption tag. | MASTG/MASWE integrity review | [CRM6 help](help/CRM6.md) |
+| [CRM7](https://cornucopia.owasp.org/cards/CRM7) | true | The app uses an APK-embedded key instead of Android Keystore. | MASTG/MASWE key-storage review | [CRM7 help](help/CRM7.md) |
+| [CRM9](https://cornucopia.owasp.org/cards/CRM9) | true | AES-CBC with a fixed IV produces repeatable ciphertext patterns. | MASTG/MASWE cipher-configuration review | [CRM9 help](help/CRM9.md) |
+| [CRMX](https://cornucopia.owasp.org/cards/CRMX) | true | Attackers can recover the reusable AES key from the APK. | MASTG/MASWE hard-coded-key review | [CRMX help](help/CRMX.md) |
+| [CM8](https://cornucopia.owasp.org/cards/CM8) | true | Unprotected exported components let another app start reviews and provide approval state. | MASTG/MASWE delegated-action review | [CM8 help](help/CM8.md) |
+| [CMX](https://cornucopia.owasp.org/cards/CMX) | true | A caller-controlled path can escape the provider's intended reports directory. | MASTG/MASWE path-traversal review | [CMX help](help/CMX.md) |
+
+### MobileApp cards explicitly not applicable
+
+The remaining cards are deliberately **not selected** and are documented as
+`Applicable: false`. They are also returned as `applicable=false` and
+`implemented=false` by the Android scenario catalog. They are not silently
+treated as vulnerabilities in this app.
+
+| Suit | Not-selected cards | Scope reason |
+|---|---|---|
+| Platform & Code | PCX, PCJ, PCK, PCA | No WebView or invented attack, and no deliberate outdated-platform or native memory-corruption exercise. |
+| Authentication & Authorization | AA3, AA4, AA5, AA6, AAX, AAJ, AAK, AAA | No biometric prompt, keystore unlock flow, URL-scheme login, or separate authorization service. |
+| Network & Storage | NSJ, NSX, NSQ, NSK, NSA | Inference is entirely on-device, so there is no model network path, certificate-pinning, or custom TLS-trust implementation. |
+| Resilience | RS6, RSK, RSA | No weak anti-debugging control exists to bypass, and no invented resilience attack is claimed. |
+| Cryptography | CRM5, CRM8, CRMJ, CRMQ, CRMK, CRMA | Standard AES is used rather than obfuscation or custom cryptography; no separate fail-open or invented crypto path exists. |
+| Cornucopia | CM2, CM3, CM4, CM5, CM6, CM7, CM9, CMJ, CMQ, CMK, CMA | No separate privacy-consent, notification, file-download, or content-distribution workflow. |
+| Wild cards | JOAM, JOBM | Open-ended compliance and surveillance cards are not represented by a specific control. |
+
+The full source mapping remains in the
+[Cornucopia MobileApp mappings](https://github.com/OWASP/cornucopia/blob/main/source/mobileapp-mappings-2.0.yaml).
 
 ## License
 

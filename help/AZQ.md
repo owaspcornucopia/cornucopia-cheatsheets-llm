@@ -2,11 +2,20 @@
 
 # AZQ — Command Injection via SQL Injection Escalation
 
+## Implementations
+
+- [Python implementation](#all-implementations)
+- [.NET implementation](#all-implementations)
+- [TypeScript implementation](#typescript-implementation)
+- [Java implementation](#java-implementation)
+
 ## Threat
 
 An attacker can inject a command that the application will run at a higher privilege level.
 
 ## How This Applies
+
+### All implementations
 
 While SQLite does not support stored procedures or direct OS command execution, SQL injection in this application could potentially escalate to command-level access through:
 
@@ -15,7 +24,15 @@ While SQLite does not support stored procedures or direct OS command execution, 
 - **Application-level escalation**: A successfully injected query could modify application state in ways that lead to further exploitation
 - **Chained exploits**: Information gained from SQL injection (e.g., file paths, configuration) could enable other attack vectors
 
-The database runs within the same process as the API application with no privilege separation. In [all four implementations](#implementations), SQLite extensions can be loaded through the query path, so capabilities exposed by the SQLite library are reachable through the injection point. The [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) extracts `load_extension()` calls from model-generated SQL and passes their paths to the native database driver; the [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java) extracts the same calls and passes their paths to `System.load` before executing the remaining SQL.
+The database runs within the same process as the API application with no privilege separation. In all four implementations, SQLite extensions can be loaded through the query path, so capabilities exposed by the SQLite library are reachable through the injection point.
+
+### TypeScript implementation
+
+The TypeScript implementation extracts `load_extension()` calls from model-generated SQL and passes their paths to the native database driver.
+
+### Java implementation
+
+The Java implementation extracts the same calls and passes their paths to `System.load` before executing the remaining SQL.
 
 ## Example Attack
 
@@ -28,10 +45,3 @@ An attacker uses prompt injection to generate SQL that calls `load_extension('/t
 3. **Use a read-only database connection** to prevent write-based escalation paths.
 4. **Implement process isolation** — run the database in a separate container with minimal filesystem access.
 5. **Apply the principle of least privilege** to the container — remove unnecessary capabilities, use a non-root user, mount the filesystem read-only where possible.
-
-## Implementations
-
-- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
-- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
-- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
-- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

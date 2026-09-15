@@ -32,3 +32,15 @@ The LLM, trying to be helpful, generates a SQL query that includes the schema ex
 4. **Maintain an allowlist of query patterns** — define the specific query shapes that are acceptable and reject everything else.
 5. **Use a read-only database connection** to limit the damage potential even if validation is bypassed.
 6. **Implement output format validation** — verify the LLM output strictly matches the expected JSON schema before processing.
+
+## Android-specific scenario
+
+The Android parser extracts a `sql` string from JSON, nested JSON strings, fenced
+JSON, or raw `SELECT`, `WITH`, and `PRAGMA` output. `FraudInvestigator` then passes
+that string to `TransactionStore.execute` without parameter binding or an
+allow-list. The only provider is the on-device llama.cpp model; no host service
+or heuristic path is involved.
+
+Run `anything' OR 1=1 --` through the harness and inspect the returned rows.
+Treat model output as untrusted data, parse structured intent instead of SQL, and
+reject statements and columns outside an explicit fraud-query policy.

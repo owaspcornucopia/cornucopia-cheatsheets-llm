@@ -32,3 +32,15 @@ An attacker poisons the database with misleading investigation records (via the 
 4. **Log all fraud determinations** for periodic human audit and quality assurance.
 5. **Implement a feedback mechanism** where incorrect determinations can be reported and used to improve the system.
 6. **Do not use the LLM as the sole decision-maker** for consequential actions like blocking transactions or filing fraud reports.
+
+## Android-specific scenario
+
+The native screen displays `FRAUD SUSPECTED` or `NO FRAUD INDICATOR` immediately
+after the model-to-SQL workflow. There is no user approval, confidence
+threshold, second-person review, or confirmation before a user can rely on the
+verdict. The app's `FraudDecisionEngine` also treats a returned fraud flag or a
+high amount as sufficient evidence, so poisoned rows or incorrect model SQL can
+impact the visible decision.
+
+Test it with `Is transaction TX-1002 fraudulent?` and compare the automatic result
+with the rows and model answer shown below it. Enforce a human review in the loop and/or impelement and show confidence/uncertainty scores before allowing any real irreversible action.

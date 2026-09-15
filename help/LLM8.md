@@ -30,3 +30,16 @@ Through prompt injection, an attacker causes the LLM to generate: `INSERT INTO i
 4. **Move authentication and authorization outside the tool** — verify identity and permissions before the tool is invoked.
 5. **Apply the principle of least privilege** — the database user/connection used by the tool should only have SELECT permissions on the investigations table.
 6. **Filter tool outputs** — redact sensitive fields (dates of birth, full addresses) unless the caller specifically needs them.
+
+## Android-specific scenario
+
+`TransactionStore.execute` calls Android SQLite `rawQuery(sql, null)` with the
+string extracted by `SqlToolCallParser`. The parser accepts JSON, fenced JSON,
+and raw `SELECT`, `WITH`, or `PRAGMA` text; there is no allow-list,
+parameter binding, result filter, or authorization check. Android's cursor API
+limits this particular path to the query statements, but it still exposes every
+column and SQLite metadata the model can request.
+
+Try `Show all transactions` or `anything' OR 1=1 --`, then inspect the SQL and
+rows on screen. Replace the raw boundary with structured parameters, an
+allow-list, a read-only connection, and output redaction.

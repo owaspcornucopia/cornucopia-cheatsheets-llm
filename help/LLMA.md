@@ -13,3 +13,10 @@ The LLMA card is the Ace (creative/novel attack) card for the Large Language Mod
 This is a placeholder for creative threat modeling exercises. In the context of a security guide, it does not describe a specific, actionable threat with defined mitigations. The 11 applicable LLM threats already identified (LLM2-LLM9, LLMJ, LLMK, LLMQ, LLMX) provide comprehensive coverage of the application's AI-specific attack surface.
 
 This card is useful during live threat modeling sessions to encourage creative thinking about emerging AI threats, but does not belong in a reference guide documenting known, specific vulnerabilities.
+
+## Android-specific scenario
+
+Not applicable to the native Android build. The scenario intentionally selects
+the named LLM cards and does not claim that an additional novel attack has been
+implemented. Use the MobileApp and LLM help pages to propose and record a new
+attack during a workshop if one is discovered.

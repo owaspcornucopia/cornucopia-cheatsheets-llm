@@ -8,7 +8,9 @@ An attacker can alter service-to-service data because the application does not a
 
 ## How This Applies
 
-[All four implementations](#implementations) use an internal HTTP channel between the API service and the model service. This channel carries:
+### All implementations
+
+All four implementations use an internal HTTP channel between the API service and the model service. This channel carries:
 
 - **API service → model service**: Full conversation messages including the system prompt and the user's question. An attacker who can intercept this traffic can replace or modify the system prompt or inject arbitrary instructions.
 - **Model service → API service**: The LLM-generated SQL query. An attacker who can modify this response can substitute a destructive or data-exfiltrating query before it is executed.
@@ -53,10 +55,3 @@ Ensure the messages sent to the model service are constructed server-side and ne
 - [OWASP Top 10 A02:2021 Cryptographic Failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
 - [CAPEC-94: Adversary in the Middle (AiTM)](https://capec.mitre.org/data/definitions/94.html)
 - [CAPEC-39: Manipulating Opaque Client-based Data](https://capec.mitre.org/data/definitions/39.html)
-
-## Implementations
-
-- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
-- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
-- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
-- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

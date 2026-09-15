@@ -31,3 +31,17 @@ An attacker exploits the SQL injection vulnerability to insert a record where `p
 4. **Fix the SQL injection vulnerability** (see VEK) to prevent attackers from inserting poisoned records.
 5. **Implement output validation** — check that the model's final answer is consistent with the actual query results, flagging anomalies for human review.
 6. **Limit the fields** included in the LLM context to only those necessary for fraud determination.
+
+## Android-specific scenario
+
+The Android version uses a two-stage flow:
+
+1. After `TransactionStore` returns rows, `FraudInvestigator` sends the question, SQL,
+and selected row signals to `EmbeddedLlamaSqlModel.summarize`. 
+2. The on-device model receives database-derived text in its final-answer prompt. Database text is therefore model input, not trusted data.
+
+A malicious app can poison the database with an instruction such as
+`IGNORE ALL PREVIOUS INSTRUCTIONS` and then run an investigation to observe that
+text in the model context and displayed answer. Delimit data, select only needed
+fields, enforce database integrity, and compare the final answer with trusted
+business rules.

@@ -8,7 +8,9 @@ An attacker can read and modify unencrypted data in transit including credential
 
 ## How This Applies
 
-[All four implementations](#implementations) serve plain HTTP on port 9000. All data flows between clients and the API are unencrypted:
+### All implementations
+
+All four implementations serve plain HTTP on port 9000. All data flows between clients and the API are unencrypted:
 
 - **Authentication tokens** travel in the `token` HTTP header in plaintext
 - **Investigation questions** (which may reference real people) are transmitted in cleartext
@@ -28,10 +30,3 @@ An attacker performs ARP spoofing on the network segment where the application r
 3. **Use encrypted container networking** — in Docker/Kubernetes deployments, enable network encryption for east-west traffic.
 4. **Deploy HSTS headers** to prevent protocol downgrade attacks.
 5. **Use TLS 1.3** with strong cipher suites for optimal security and performance.
-
-## Implementations
-
-- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
-- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
-- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
-- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

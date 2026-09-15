@@ -8,7 +8,9 @@ An attacker can bypass authentication because the application does not use a cen
 
 ## How This Applies
 
-[All four implementations](#implementations) authenticate by comparing the request `token` header against a hardcoded in-memory token collection.
+### All implementations
+
+All four implementations authenticate by comparing the request `token` header against a hardcoded in-memory token collection.
 
 This is not a proper authentication framework. It provides:
 
@@ -32,10 +34,3 @@ A new endpoint is added to the application but the developer forgets to include 
 3. **Use a proven protocol** (OAuth 2.0, API keys via an API gateway) instead of hand-written token checking.
 4. **Apply the same authentication standard** across all current and future endpoints.
 5. **Test authentication enforcement** — automated tests should verify that all endpoints reject unauthenticated requests.
-
-## Implementations
-
-- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
-- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
-- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
-- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

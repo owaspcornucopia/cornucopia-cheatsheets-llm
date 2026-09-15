@@ -31,3 +31,16 @@ An attacker uses prompt injection to cause the LLM to generate: `UPDATE investig
 4. **Log all executed queries** with the requesting user's identity for audit purposes.
 5. **Implement query approval workflows** for queries that access sensitive columns (dates of birth, addresses) or return large result sets.
 6. **Set a maximum result size** — if a query would return more than N rows, require explicit confirmation.
+
+## Android-specific scenario
+
+The Android button executes the generated query as soon as the model responds.
+There is no confirmation screen showing the SQL, no user approval, and no
+maximum-result limit before the queries reach the model prompt and the UI.
+The training activity accepts an `autoInvestigate` intent extra so the
+harness can execute an unattended action.
+
+Try the broad query and observe that all seeded rows are returned automatically.
+Require explicit approval for generated operations, enforce read-only scoped
+queries, cap result size, and make the user confirm the exact question or structured
+request before execution.

@@ -2,13 +2,22 @@
 
 # VEA — Unable to Detect Novel Attacks Against Input Validation
 
+## Implementations
+
+- [Python implementation](#python-implementation)
+- [.NET implementation](#net-implementation)
+- [TypeScript implementation](#typescript-implementation)
+- [Java implementation](#java-implementation)
+
 ## Threat
 
 Novel or unknown attacks against data validation and encoding go undetected because there is no logging or monitoring of input-related security events.
 
 ## How This Applies
 
-The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) disables framework request logging, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) records parser failures but does not provide complete input-security monitoring, and the [TypeScript](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) and [Java](https://github.com/owaspcornucopia/llm-companion-scenario-java) implementations have no application-level request or input-security logging. [None of the four implementations](#implementations) provides security logging for:
+### All implementations
+
+None of the four implementations provides security logging for:
 
 - Unusual or malicious input patterns
 - Failed parsing attempts (which may indicate injection attempts)
@@ -17,6 +26,22 @@ The [Python implementation](https://github.com/owaspcornucopia/llm-companion-sce
 - Volume or pattern anomalies in API usage
 
 Without logging, the operations team has no visibility into what questions are being asked, what SQL is being generated, or whether the system is under attack. A novel attack against the application's (absent) input validation would go completely unnoticed.
+
+### Python implementation
+
+The Python implementation disables framework request logging.
+
+### .NET implementation
+
+The .NET implementation records parser failures but does not provide complete input-security monitoring.
+
+### TypeScript implementation
+
+The TypeScript implementation has no application-level request or input-security logging.
+
+### Java implementation
+
+The Java implementation has no application-level request or input-security logging.
 
 ## Example Attack
 
@@ -29,10 +54,3 @@ An attacker spends weeks probing the API with increasingly sophisticated prompt 
 3. **Implement anomaly detection** — alert on unusual patterns such as high request volume, repeated parsing failures, or queries accessing unexpected data.
 4. **Set up security monitoring** with alerting thresholds for suspicious activity.
 5. **Retain logs** for a sufficient period to support incident investigation and forensics.
-
-## Implementations
-
-- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
-- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
-- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
-- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

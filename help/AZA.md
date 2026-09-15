@@ -8,13 +8,15 @@ Novel attacks against authorization go undetected because there is no logging or
 
 ## How This Applies
 
+### All implementations
+
 The application has no logging of authorization-related events:
 
 - No record of which data each token accesses
 - No logging of cross-tenant data access attempts
 - No monitoring of SQL queries that access data outside a token's expected scope
 - No alerting on unusual data access patterns
-- [None of the four implementations](#implementations) records authorization decisions or database access by token
+- None of the four implementations records authorization decisions or database access by token
 
 If an attacker discovers a way to access data they shouldn't (through SQL injection, token misuse, or any other method), there is no detection mechanism. The application is completely blind to authorization violations.
 
@@ -29,10 +31,3 @@ An attacker systematically exfiltrates all investigation records over several we
 3. **Create access baselines** — establish normal patterns for each token and flag deviations.
 4. **Enable audit logging** at the database level to capture all queries with their results.
 5. **Implement periodic access reviews** — regularly verify that access patterns align with intended authorization policies.
-
-## Implementations
-
-- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
-- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
-- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
-- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)

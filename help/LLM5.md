@@ -30,3 +30,12 @@ A "Crypto Mc Cryptface exchange" API consumer asks: "Show me all fraud investiga
 3. **Enforce row-level security** at the database layer, appending mandatory tenant filters to all queries.
 4. **Remove debug and backdoor tokens** from the system entirely.
 5. **Implement proper identity management** using an identity provider that issues scoped tokens with claims indicating which data the bearer is authorized to access.
+
+## Android-specific scenario
+
+The native app has no login, tenant identifier, account binding, or row/column-level
+authorization scope. Every app installation creates the same fraud transaction table, and the broad question `Show all transactions` becomes `SELECT * FROM transactions`.
+The exported activity also accepts a question from another process, so a malicious app does not need to be authorized to request the data.
+
+Test it with the default question, then add a real authenticated authorization context, mandatory authorization scoping, and a read-only data layer that rejects
+inserts from outside the app's own authorization.

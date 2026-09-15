@@ -29,3 +29,11 @@ An attacker obtains one of the hardcoded tokens and writes a script that sends h
 4. **Implement a request queue** with maximum depth, rejecting excess requests with HTTP 429 (Too Many Requests).
 5. **Monitor resource usage** and set alerts for unusual spikes in CPU, memory, or request volume.
 6. **Add input length limits** (see VE3) to prevent computationally expensive long prompts.
+
+## Android-specific scenario
+
+The native app uses a single-thread executor with an unbounded queue and calls
+the embedded model twice per investigation: once for SQL and once for the final
+answer. There is no inference timeout, rate limiting, prompt length
+limit, or queue cap.
+A tester can repeatedly launch the exported activity with `autoInvestigate=true` or tap the button rapidly, queuing work until the mobile is exhausted.

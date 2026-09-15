@@ -8,7 +8,9 @@ Novel attacks against authentication go undetected because there is no logging o
 
 ## How This Applies
 
-[None of the four implementations](#implementations) records authentication events. The [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario) disables framework request logging, the [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet) logs parser failures but does not audit token validation, and the [TypeScript](https://github.com/owaspcornucopia/llm-companion-scenario-typescript) and [Java](https://github.com/owaspcornucopia/llm-companion-scenario-java) implementations have no application-level authentication event logging. There are no logs for:
+### All implementations
+
+None of the four implementations records authentication events. There are no logs for:
 
 - Successful authentications (who is using the API and when)
 - Failed authentications (invalid tokens being tried)
@@ -28,10 +30,3 @@ An attacker discovers a way to bypass the token check (e.g., through a race cond
 3. **Monitor for authentication bypass attempts** — log requests that reach protected resources without valid credentials.
 4. **Create dashboards** showing authentication patterns so operators can spot deviations.
 5. **Set up automated alerting** for authentication anomalies (e.g., sudden spike in failed attempts, new IP using an existing token).
-
-## Implementations
-
-- [Python implementation](https://github.com/owaspcornucopia/llm-companion-scenario)
-- [.NET implementation](https://github.com/owaspcornucopia/llm-companion-scenario-dotnet)
-- [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
-- [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)
