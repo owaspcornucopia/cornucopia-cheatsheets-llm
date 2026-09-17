@@ -10,7 +10,7 @@ For mobile, see each vulnerable mobile applications.
 
 ## Fraud Investigation LLM Application — Cheat Sheet
 
-Applicable threats for the LLM-based fraud investigation API. Each entry links to a page explaining how the threat manifests in this application and what mitigations are needed. The threats are sorted according to the face value of the Cornucopia card in question.
+Applicable threats for the LLM-based fraud investigation API and mobile apps. Each entry links to a page explaining how the threat manifests in this application and what mitigations are needed. The threats are sorted according to the face value of the Cornucopia card in question.
 
 ---
 
