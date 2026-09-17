@@ -1,10 +1,12 @@
 # PwnedNext - LLM App Cheat Sheet
 
-## High-Level Architecture of AI Anti-Fraud 3.0
+## High-Level Architecture of AI Anti-Fraud 3.0 - Backend
 
 ![Architecture sequence diagram](architecture-sequence-diagram.svg)
 
 ![Threat model](ThreatDragonModels/threatmodel.png)
+
+For mobile, see each vulnerable mobile applications.
 
 ## Fraud Investigation LLM Application — Cheat Sheet
 
