@@ -19,6 +19,7 @@ Applicable threats for the LLM-based fraud investigation API. Each entry links t
 - [TypeScript implementation](https://github.com/owaspcornucopia/llm-companion-scenario-typescript)
 - [Java implementation](https://github.com/owaspcornucopia/llm-companion-scenario-java)
 - [Android implementation](https://github.com/owaspcornucopia/llm-companion-scenario-android)
+- [iOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios)
 
 ## Data Validation & Encoding
 
@@ -207,24 +208,6 @@ The following threats were assessed and determined not applicable to this applic
 | 6 | false | No RAG, vector DB, or MCP sources to poison | [LLM6](help/LLM6.md) |
 | Ace | false | Creative/novel placeholder — not a specific threat | [LLMA](help/LLMA.md) |
 
-## Android MobileApp Coverage
-
-The Android companion keeps the Java scenario's PwnedNext/F-Corp back story but
-replaces the web API with a native screen, local SQLite store, exported Android
-components, and an on-device llama.cpp model packaged in the single APK. An
-external model service and heuristic fallback are not available; inference runs
-only inside the Android process. See the
-[Android single-APK setup and README](../llm-companion-scenario-android/README.md)
-for the model download, native toolchain, and emulator commands. The Android
-data-flow and sequence diagrams are [documented in the Android repository](../llm-companion-scenario-android/docs/architecture.md).
-It implements **41 MobileApp Edition v2.0 cards**. Every applicable card has a help page with
-**Threat**, **How This Applies**, **Example Attack**, **Mitigations**, and OWASP
-[MASTG](https://mas.owasp.org/MASTG/) /
-[MASWE](https://mas.owasp.org/MASWE/) references.
-
-The shared LLM sections above remain applicable to the other companion projects.
-Each LLM help page keeps that shared guidance and adds a clearly labeled
-**Android-specific scenario**; Android notes do not replace cross-project facts.
 
 ### Implemented MobileApp cards
 
@@ -246,7 +229,7 @@ Each LLM help page keeps that shared guidance and adds a clearly labeled
 | [NS6](https://cornucopia.owasp.org/cards/NS6) | true | Reviews and approvals work without checking for a secure device lock or trusted device state. | MASTG/MASWE device-access review | [NS6 help](help/NS6.md) |
 | [NS7](https://cornucopia.owasp.org/cards/NS7) | true | Full prompts, SQL, rows, and memo values remain in activity memory. | KNOW-0051, 0103 | [NS7 help](help/NS7.md) |
 | [NS8](https://cornucopia.owasp.org/cards/NS8) | true | Last results and fraud overrides are stored in ordinary SharedPreferences. | TEST-0200, 0201, 0207, 0299--0306, 0338, 0387; MASWE-0002, 0001, 0057 | [NS8 help](help/NS8.md) |
-| [NS9](https://cornucopia.owasp.org/cards/NS9) | true | A restored or edited preference changes the visible fraud outcome. | TEST-0338, 0387; MASWE-0057 | [NS9 help](help/NS9.md) |
+| [NS9](https://cornucopia.owasp.org/cards/NS9) | true | A restored or edited preference changes report authorization behavior without entering the model prompt. | TEST-0338, 0387; MASWE-0057 | [NS9 help](help/NS9.md) |
 | [AA2](https://cornucopia.owasp.org/cards/AA2) | true | High-value approval succeeds without fresh authentication or biometrics. | TEST-0266--0269; MASWE-0020, 0021 | [AA2 help](help/AA2.md) |
 | [AA7](https://cornucopia.owasp.org/cards/AA7) | true | Client-supplied authorization and replayed approval tokens can clear a transaction's `fraud_detected` flag. | TEST-0266, 0267, 0327, 0329, 0375; MASWE-0020, 0050 | [AA7 help](help/AA7.md) |
 | [AA8](https://cornucopia.owasp.org/cards/AA8) | true | Missing authorization state defaults to allow. | TEST-0266, 0267, 0327; MASWE-0020 | [AA8 help](help/AA8.md) |

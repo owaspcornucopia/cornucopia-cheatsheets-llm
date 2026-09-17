@@ -26,3 +26,7 @@ Not applicable to the native Android build. The app has SQLite rows and a
 two-stage model prompt, but no RAG index, vector store, MCP server, or retrieval
 knowledge source. Testers should use the Android-specific LLM9 card for
 poisoned database content instead.
+
+## IOS implementation
+
+This card is not applicable to the native iOS AI Anti Fraud 3.0 scenario.

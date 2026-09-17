@@ -44,3 +44,23 @@ Try the broad query and observe that all seeded rows are returned automatically.
 Require explicit approval for generated operations, enforce read-only scoped
 queries, cap result size, and make the user confirm the exact question or structured
 request before execution.
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the AISVS controls in the AISVS references connected to this card. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation), use the AITG tests that this card references and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced accordingly.
+
+### IOS details
+
+SQL executes and the second model summarizes immediately; the Report not fraudulent action is separate and does not approve the query before execution.

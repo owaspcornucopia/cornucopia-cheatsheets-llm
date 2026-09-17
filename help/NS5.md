@@ -43,3 +43,23 @@ arbitrary paths through a provider.
 - MASWE: [0001](https://mas.owasp.org/MASWE-0001),
   [0002](https://mas.owasp.org/MASWE-0002),
   [0006](https://mas.owasp.org/MASWE-0006).
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced.
+
+### IOS details
+
+The Application Support database is not excluded from backup, and caller-controlled support paths can reach files outside the intended directory.

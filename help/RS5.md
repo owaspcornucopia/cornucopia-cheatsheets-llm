@@ -8,8 +8,11 @@ debugging or dynamic instrumentation remains enabled.
 ## How This Applies
 
 The debug build explicitly sets `debuggable true`. It also exposes the
-investigation activity, app receiver, app providers, Logcat, and raw SQL so a
-runtime app inspector can observe and change the workflow.
+investigation activity, app receiver, app providers, and verbose Logcat output
+so a runtime app inspector can observe and change the workflow. The private
+application manifest metadata
+`org.owasp.pwnednext.android.SHOW_DEBUG_DETAILS` can additionally expose raw SQL
+and returned rows in the review result when set to `true` for a debug build.
 
 ## Example Attack
 
@@ -33,3 +36,23 @@ and APK flags during CI.
   [0028](https://mas.owasp.org/MASTG-KNOW-0028),
   [0062](https://mas.owasp.org/MASTG-KNOW-0062).
 - MASWE: [0063](https://mas.owasp.org/MASWE-0063).
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced at the native boundary.
+
+### IOS details
+
+The debug Xcode scheme is used for the training build and remains inspectable by a debugger.

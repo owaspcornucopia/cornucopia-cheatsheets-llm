@@ -51,3 +51,23 @@ data, and test the merged manifest as part of release review.
   [0051](https://mas.owasp.org/MASTG-BEST-0051).
 - MASWE: [0034](https://mas.owasp.org/MASWE-0034),
   [0066](https://mas.owasp.org/MASWE-0066).
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced at the native boundary.
+
+### IOS details
+
+Any app that can open the registered pwnednext:// scheme can invoke the investigation and report workflow.

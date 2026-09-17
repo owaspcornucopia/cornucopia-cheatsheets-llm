@@ -20,3 +20,7 @@ Not applicable to the native Android build. The scenario intentionally selects
 the named LLM cards and does not claim that an additional novel attack has been
 implemented. Use the MobileApp and LLM help pages to propose and record a new
 attack during a workshop if one is discovered.
+
+## IOS implementation
+
+This card is not applicable to the native iOS AI Anti Fraud 3.0 scenario.

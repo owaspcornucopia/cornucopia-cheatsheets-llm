@@ -41,5 +41,27 @@ limits this particular path to the query statements, but it still exposes every
 column and SQLite metadata the model can request.
 
 Try `Show all transactions` or `anything' OR 1=1 --`, then inspect the SQL and
-rows on screen. Replace the raw boundary with structured parameters, an
-allow-list, a read-only connection, and output redaction.
+rows on screen. In the iOS app, inspect the natural-language answer instead;
+the generated SQL and rows remain hidden debug data. Replace the raw boundary
+with structured parameters, an allow-list, a read-only connection, and output
+redaction.
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the AISVS controls in the AISVS references connected to this card. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation), use the AITG tests that this card references and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced accordingly.
+
+### IOS details
+
+The model-generated SQL and URL where override execute against the persistent SQLite database without an allow-list, tenant scope, or approval gate.

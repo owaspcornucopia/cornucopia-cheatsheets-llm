@@ -43,4 +43,32 @@ high amount as sufficient evidence, so poisoned rows or incorrect model SQL can
 impact the visible decision.
 
 Test it with `Is transaction TX-1002 fraudulent?` and compare the automatic result
-with the rows and model answer shown below it. Enforce a human review in the loop and/or impelement and show confidence/uncertainty scores before allowing any real irreversible action.
+with the human-readable model answer. For controlled debugging, set
+the application manifest metadata
+`org.owasp.pwnednext.android.SHOW_DEBUG_DETAILS` to `true` before building the
+debug APK to show the generated SQL and returned rows. Enforce a human review in
+the loop and/or implement and show confidence/uncertainty scores before allowing
+any real irreversible action.
+
+## IOS implementation
+
+The second model pass interprets the SQL result and the screen displays only its
+natural-language answer. The Report not fraudulent action is separate from
+investigation and remains available without step-up authentication; there is no
+Approve button or human review of the model result.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation. The
+exact path depends on the card and is intentionally reproducible with synthetic
+transactions.
+
+### What to do
+
+Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced.
+Enforce a human review in the loop and/or implement and show confidence/uncertainty scores before allowing
+any real irreversible action.

@@ -51,3 +51,23 @@ records through system logging, instrumentation, or a crash/analytics SDK.
 ## Applicability
 
 The corresponding Cornucopia card is [NS2](https://cornucopia.owasp.org/cards/NS2).
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced.
+
+### IOS details
+
+The app logs the question, generated SQL, and returned rows through OSLog, even though the normal screen hides SQL and rows.

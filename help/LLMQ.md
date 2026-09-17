@@ -41,6 +41,28 @@ that string to `TransactionStore.execute` without parameter binding or an
 allow-list. The only provider is the on-device llama.cpp model; no host service
 or heuristic path is involved.
 
-Run `anything' OR 1=1 --` through the harness and inspect the returned rows.
+Run `anything' OR 1=1 --` through the harness and inspect the natural-language
+answer. The SQL and returned rows are retained as hidden debug data rather than
+rendered in the normal iOS interface.
 Treat model output as untrusted data, parse structured intent instead of SQL, and
 reject statements and columns outside an explicit fraud-query policy.
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the AISVS controls in the AISVS references connected to this card. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation), use the AITG tests that this card references and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced accordingly.
+
+### IOS details
+
+The parser accepts nested JSON, fenced output, raw SQL, and explanatory prefixes before execution, leaving ambiguity at the model-to-SQL boundary.

@@ -38,3 +38,23 @@ bind authorization to the transaction and caller, and reject stale or missing st
   [0057](https://mas.owasp.org/MASTG-BEST-0057).
 - MASWE: [0032](https://mas.owasp.org/MASWE-0032),
   [0050](https://mas.owasp.org/MASWE-0050).
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced.
+
+### IOS details
+
+The pwnednext:// URL scheme accepts a question, autoInvestigate flag, SQL WHERE fragment, authorization flag, approval token, fraud override, and file path from another app.

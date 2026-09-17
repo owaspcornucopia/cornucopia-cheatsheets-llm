@@ -35,3 +35,23 @@ review transitive SDK permissions before release.
   [0363](https://mas.owasp.org/MASTG-TEST-0363).
 - MASTG best practice: [0051](https://mas.owasp.org/MASTG-BEST-0051).
 - MASWE: [0066](https://mas.owasp.org/MASWE-0066).
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced.
+
+### IOS details
+
+Unused camera, location, microphone, and photo-library usage descriptions remain in Info.plist even though the fraud workflow does not need those capabilities.

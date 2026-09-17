@@ -46,3 +46,7 @@ before treating them as tool instructions.
   [0043](https://mas.owasp.org/MASTG-BEST-0043).
 - MASWE: [0026](https://mas.owasp.org/MASWE-0026),
   [0027](https://mas.owasp.org/MASWE-0027).
+
+## IOS implementation
+
+This card is not applicable to the native iOS AI Anti Fraud 3.0 scenario.

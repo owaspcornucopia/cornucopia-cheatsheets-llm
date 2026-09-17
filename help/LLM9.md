@@ -45,3 +45,23 @@ A malicious app can poison the database with an instruction such as
 text in the model context and displayed answer. Delimit data, select only needed
 fields, enforce database integrity, and compare the final answer with trusted
 business rules.
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the AISVS controls in the AISVS references connected to this card. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation), use the AITG tests that this card references and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced accordingly.
+
+### IOS details
+
+Database-derived transaction fields are placed into the second model prompt, so poisoned local content can influence the natural-language answer.

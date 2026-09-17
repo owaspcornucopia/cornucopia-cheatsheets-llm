@@ -11,17 +11,21 @@ SQL directly on screen.
 
 ## How This Applies
 
-The PwnedNext Android activity displays the fraud result, the generated SQL query, and
-every row returned by the intentionally unsafe request. It does not set
-`FLAG_SECURE`, redact account data, or clear the result before the activity enters
-the background.
+The PwnedNext Android activity displays the fraud result and human-readable model
+notes by default. Generated SQL and returned rows appear only when the developer
+sets the application manifest metadata
+`org.owasp.pwnednext.android.SHOW_DEBUG_DETAILS` to `true` and builds the debug
+APK. The activity does not set `FLAG_SECURE`, redact account data, or clear the
+result before entering the background.
 
 ## Example Attack
 
-1. Ask `Show all transactions`.
-2. Leave the app open in the emulator.
-3. Capture the screen, start screen recording, or open the task switcher.
-4. Read the transaction rows and model-generated SQL from the capture.
+1. Set `org.owasp.pwnednext.android.SHOW_DEBUG_DETAILS` to `true` in the
+   application manifest and build/install the debug APK.
+2. Ask `Show all transactions`.
+3. Leave the app open in the emulator.
+4. Capture the screen, start screen recording, or open the task switcher.
+5. Read the transaction rows and model-generated SQL from the capture.
 
 The same issue can expose prompts and results when a user shares a device or when
 a preview is collected by a management tool.
@@ -61,3 +65,23 @@ a preview is collected by a management tool.
 The corresponding Cornucopia card is
 [PC2](https://cornucopia.owasp.org/cards/PC2); the app behavior is in
 [`MainActivity`](https://github.com/owaspcornucopia/llm-companion-scenario-android/blob/main/app/src/main/java/org/owasp/pwnednext/android/MainActivity.java).
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced.
+
+### IOS details
+
+The SwiftUI result screen does not use a secure display flag. The natural-language answer can appear in screenshots, recordings, previews, and accessibility snapshots.

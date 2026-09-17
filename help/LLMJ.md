@@ -77,3 +77,23 @@ single-APK model smoke test.
 ### Android implementation
 
 Pin a reviewed commit, verify every file, keep the model in a controlled registry, and require a review.
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the AISVS controls in the AISVS references connected to this card. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation), use the AITG tests that this card references and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced accordingly.
+
+### IOS details
+
+The app packages two downloaded GGUFs and pinned llama.cpp source but does not verify either model's provenance with a cryptographic checksum at runtime. The native path does not load the TypeScript PEFT adapter.

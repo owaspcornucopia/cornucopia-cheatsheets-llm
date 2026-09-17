@@ -45,3 +45,23 @@ and reject modified or unverifiable records rather than accepting them.
 - MASWE: [0001](https://mas.owasp.org/MASWE-0001),
   [0002](https://mas.owasp.org/MASWE-0002),
   [0057](https://mas.owasp.org/MASWE-0057).
+
+## IOS implementation
+
+The app uses a native iOS equivalent of the mobile behavior described above.
+
+### What can go wrong
+
+An attacker can use the matching iOS entry point, local storage, process state,
+or on-device model flow to expose data or change the fraud investigation.
+
+### What to do
+
+Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
+the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
+verify that input validation, authorization, data minimization, integrity, and
+protected storage are enforced.
+
+### IOS details
+
+last_result, last_question, fraud_override, and the encrypted model prompt are stored in ordinary UserDefaults rather than protected storage.
