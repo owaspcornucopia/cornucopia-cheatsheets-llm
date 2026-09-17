@@ -43,4 +43,9 @@ high amount as sufficient evidence, so poisoned rows or incorrect model SQL can
 impact the visible decision.
 
 Test it with `Is transaction TX-1002 fraudulent?` and compare the automatic result
-with the rows and model answer shown below it. Enforce a human review in the loop and/or impelement and show confidence/uncertainty scores before allowing any real irreversible action.
+with the human-readable model answer. For controlled debugging, set
+the application manifest metadata
+`org.owasp.pwnednext.android.SHOW_DEBUG_DETAILS` to `true` before building the
+debug APK to show the generated SQL and returned rows. Enforce a human review in
+the loop and/or implement and show confidence/uncertainty scores before allowing
+any real irreversible action.

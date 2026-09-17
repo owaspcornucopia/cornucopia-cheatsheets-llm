@@ -8,8 +8,11 @@ debugging or dynamic instrumentation remains enabled.
 ## How This Applies
 
 The debug build explicitly sets `debuggable true`. It also exposes the
-investigation activity, app receiver, app providers, Logcat, and raw SQL so a
-runtime app inspector can observe and change the workflow.
+investigation activity, app receiver, app providers, and verbose Logcat output
+so a runtime app inspector can observe and change the workflow. The private
+application manifest metadata
+`org.owasp.pwnednext.android.SHOW_DEBUG_DETAILS` can additionally expose raw SQL
+and returned rows in the review result when set to `true` for a debug build.
 
 ## Example Attack
 
