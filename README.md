@@ -90,14 +90,14 @@ Applicable threats for the LLM-based fraud investigation API and mobile apps. Ea
 | Value | Applicable | Threat | Details |
 |----|------------|--------|---------|
 | 2 | true | Dangerous programming patterns — direct SQL execution and permissive parsing of untrusted model output | [C2](help/C2.md) |
-| 5 | false | Internal API, no public trust to manipulate | [C5](help/C5.md) |
+| 5 | true | Internal API, no public trust to manipulate, however, it’s possible for anyone to change or remove records, thereby influencing the trust the users place in the app's ability to detect fraud | [C5](help/C5.md) |
 | 6 | true | Error handling is inconsistent, leaks information, and returns wrong HTTP status codes | [C6](help/C6.md) |
 | 7 | true | Audit trail absence as covered by Ace cards | [C7](help/C7.md) |
 | 8 | true | Infrastructure not hardened — container has no security restrictions | [C8](help/C8.md) |
 | 9 | true | Race condition on startup when scaled; amplified concurrent requests against the single model service | [C9](help/C9.md) |
 | 10 | true | Vulnerable third-party dependencies in requirements.txt | [CX](help/CX.md) |
 | Jack | true | No operational security documentation — insecure defaults ship without guidance | [CJ](help/CJ.md) |
-| Queen | false | Real-time detection absence covered by Ace cards | [CQ](help/CQ.md) |
+| Queen | true | Real-time detection absence covered by Ace cards | [CQ](help/CQ.md) |
 | King | true | Denial of service via SQL injection (DROP TABLE, DELETE, resource exhaustion) | [CK](help/CK.md) |
 
 ## Large Language Models
