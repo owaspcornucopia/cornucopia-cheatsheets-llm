@@ -41,8 +41,7 @@ or on-device model flow to expose data or change the fraud investigation.
 
 Apply the iOS controls in the MASTG, MASVS, and MASWE references above. Test
 the behavior on an iOS Simulator with the [IOS implementation](https://github.com/owaspcornucopia/llm-companion-scenario-ios#ios-implementation) and
-verify that input validation, authorization, data minimization, integrity, and
-protected storage are enforced at the native boundary.
+verify that input validation, authorization, data minimization, integrity, and protected storage are enforced.
 
 ### IOS details
 

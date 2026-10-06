@@ -223,6 +223,7 @@ The following threats were assessed and determined not applicable to this applic
 | [PC7](https://cornucopia.owasp.org/cards/PC7) | true | Exported provider concatenates an external WHERE clause into raw SQLite. | TEST-0339, 0355--0357; MASWE-0050, 0018 | [PC7 help](help/PC7.md) |
 | [PC8](https://cornucopia.owasp.org/cards/PC8) | true | Exported file provider joins caller paths without canonical containment checks. | TEST-0357; MASWE-0018 | [PC8 help](help/PC8.md) |
 | [PC9](https://cornucopia.owasp.org/cards/PC9) | true | Broadcast extras and provider selections reach sensitive operations without a strict input schema. | MASTG/MASWE IPC validation review | [PC9 help](help/PC9.md) |
+| [PCX](https://cornucopia.owasp.org/cards/PCX) | true | Android targets API 35 while current Play policy requires API 36 for new apps/updates, and iOS permits deployment to iOS 15 without an enforced recent-platform baseline. | TEST-0245, 0272--0275, 0331, 0382--0384, 0392; BEST-0032; KNOW-0023, 0074, 0076; MASWE-0041, 0043, 0044, 0035 | [PCX help](help/PCX.md) |
 | [PCQ](https://cornucopia.owasp.org/cards/PCQ) | true | Exported components accept attacker-controlled messages, queries, approval state, and paths. | MASTG/MASWE IPC review | [PCQ help](help/PCQ.md) |
 | [NS2](https://cornucopia.owasp.org/cards/NS2) | true | Questions, SQL, and rows are written to Logcat. | TEST-0203, 0231, 0296, 0297; MASWE-0005 | [NS2 help](help/NS2.md) |
 | [NS3](https://cornucopia.owasp.org/cards/NS3) | true | Complete investigation results are copied to a clipboard that is never cleared. | TEST-0258, 0276--0280, 0313, 0314; MASWE-0036 | [NS3 help](help/NS3.md) |
@@ -247,32 +248,35 @@ The following threats were assessed and determined not applicable to this applic
 | [RSJ](https://cornucopia.owasp.org/cards/RSJ) | true | Model files, preferences, and database state are trusted without authenticity checks. | MASTG/MASWE file-integrity review | [RSJ help](help/RSJ.md) |
 | [RSQ](https://cornucopia.owasp.org/cards/RSQ) | true | No runtime response protects model output, authorization helpers, or fraud decisions from hooks. | MASTG/MASWE runtime-integrity review | [RSQ help](help/RSQ.md) |
 | [RSX](https://cornucopia.owasp.org/cards/RSX) | true | Rooted, instrumented, and infected environments receive full functionality. | MASTG/MASWE platform-integrity review | [RSX help](help/RSX.md) |
+| [RSA](https://cornucopia.owasp.org/cards/RSA) | true? | No weak anti-debugging control exists to bypass, but specific resilience attacks could be invented by the player. | <none> | [RSA help](help/RSA.md) | 
 | [CRM2](https://cornucopia.owasp.org/cards/CRM2) | true | One hard-coded AES key and fixed IV are reused for different purposes. | TEST-0307, 0308; MASWE-0007 | [CRM2 help](help/CRM2.md) |
 | [CRM3](https://cornucopia.owasp.org/cards/CRM3) | true | Every encryption operation uses the same predictable IV. | MASTG/MASWE cryptography review | [CRM3 help](help/CRM3.md) |
 | [CRM4](https://cornucopia.owasp.org/cards/CRM4) | true | The AES key is a readable product string rather than random key material. | MASTG/MASWE key-generation review | [CRM4 help](help/CRM4.md) |
 | [CRM6](https://cornucopia.owasp.org/cards/CRM6) | true | AES-CBC ciphertext has no MAC or authenticated-encryption tag. | MASTG/MASWE integrity review | [CRM6 help](help/CRM6.md) |
 | [CRM7](https://cornucopia.owasp.org/cards/CRM7) | true | The app uses an APK-embedded key instead of Android Keystore. | MASTG/MASWE key-storage review | [CRM7 help](help/CRM7.md) |
+| [CRM8](https://cornucopia.owasp.org/cards/CRM8) | true | The readable fixed key, reused IV, unauthenticated CBC, and iOS XOR fallback make the effective cryptographic strength far below the expected attacker effort. | TEST-0208, 0209, 0210, 0211, 0221, 0232, 0312, 0317, 0350; BEST-0005, 0009, 0020; KNOW-0011, 0012; MASWE-0007, 0008, 0013 | [CRM8 help](help/CRM8.md) |
 | [CRM9](https://cornucopia.owasp.org/cards/CRM9) | true | AES-CBC with a fixed IV produces repeatable ciphertext patterns. | MASTG/MASWE cipher-configuration review | [CRM9 help](help/CRM9.md) |
 | [CRMX](https://cornucopia.owasp.org/cards/CRMX) | true | Attackers can recover the reusable AES key from the APK. | MASTG/MASWE hard-coded-key review | [CRMX help](help/CRMX.md) |
+| [CRMQ](https://cornucopia.owasp.org/cards/CRMQ) | true | Android and iOS helpers use a readable AES key and fixed IV without ciphertext authentication; iOS also has a repeating-key XOR fallback. | TEST-0210, 0211, 0221, 0232; BEST-0005, 0009; KNOW-0068; MASWE-0007, 0008 | [CRMQ help](help/CRMQ.md) |
+| [CRMK](https://cornucopia.owasp.org/cards/CRMK) | true | Android and iOS cryptographic calls can be intercepted or replaced on instrumented builds; no runtime hook detection protects the operation, and iOS has an XOR fallback. | TEST-0341, 0354; BEST-0041, 0048; KNOW-0030, 0032, 0087, 0118; MASWE-0058 | [CRMK help](help/CRMK.md) |
 | [CM8](https://cornucopia.owasp.org/cards/CM8) | true | Unprotected exported components let another app start reviews and provide approval state. | MASTG/MASWE delegated-action review | [CM8 help](help/CM8.md) |
 | [CMX](https://cornucopia.owasp.org/cards/CMX) | true | A caller-controlled path can escape the provider's intended reports directory. | MASTG/MASWE path-traversal review | [CMX help](help/CMX.md) |
+| [CMQ](https://cornucopia.owasp.org/cards/CMQ) | true | A future APK/IPA delivery channel lacks app attestation and signed-update requirements, allowing a MITM or compromised publisher to distribute a modified build. | TEST-0220, 0341, 0354; BEST-0041, 0048; KNOW-0030, 0032, 0058, 0087, 0118, 0140; MASWE-0056, 0058 | [CMQ help](help/CMQ.md) |
+| [CMK](https://cornucopia.owasp.org/cards/CMK) | true | Prompt-influenced model answer, SQL, and rows are forwarded to Android Clipboard or iOS UIPasteboard without source, type, or safety validation. | TEST-0375; BEST-0057; KNOW-0025, 0081, 0138; MASWE-0050 | [CMK help](help/CMK.md) |
 
 ### MobileApp cards explicitly not applicable
 
-The remaining cards are deliberately **not selected** and are documented as
-`Applicable: false`. They are also returned as `applicable=false` and
-`implemented=false` by the Android scenario catalog. They are not silently
-treated as vulnerabilities in this app.
+The remaining cards are deliberately **not selected** and are documented as not applicable.
 
 | Suit | Not-selected cards | Scope reason |
 |---|---|---|
-| Platform & Code | PCX, PCJ, PCK, PCA | No WebView or invented attack, and no deliberate outdated-platform or native memory-corruption exercise. |
-| Authentication & Authorization | AA3, AA4, AA5, AA6, AAX, AAJ, AAK, AAA | No biometric prompt, keystore unlock flow, URL-scheme login, or separate authorization service. |
-| Network & Storage | NSJ, NSX, NSQ, NSK, NSA | Inference is entirely on-device, so there is no model network path, certificate-pinning, or custom TLS-trust implementation. |
-| Resilience | RS6, RSK, RSA | No weak anti-debugging control exists to bypass, and no invented resilience attack is claimed. |
-| Cryptography | CRM5, CRM8, CRMJ, CRMQ, CRMK, CRMA | Standard AES is used rather than obfuscation or custom cryptography; no separate fail-open or invented crypto path exists. |
-| Cornucopia | CM2, CM3, CM4, CM5, CM6, CM7, CM9, CMJ, CMQ, CMK, CMA | No separate privacy-consent, notification, file-download, or content-distribution workflow. |
-| Wild cards | JOAM, JOBM | Open-ended compliance and surveillance cards are not represented by a specific control. |
+| Platform & Code | [PCJ](help/PCJ.md), [PCK](help/PCK.md), [PCA](help/PCA.md) (Only if the user is able to invent a plausible threat) |
+| Authentication & Authorization | [AA3](help/AA3.md), [AA4](help/AA4.md), [AA5](help/AA5.md), [AA6](help/AA6.md), [AAX](help/AAX.md), [AAJ](help/AAJ.md), [AAK](help/AAK.md), [AAA](help/AAA.md) (No biometric prompt, keystore unlock flow, URL-scheme login, or separate authorization service.) |
+| Network & Storage | [NSJ](help/NSJ.md), [NSX](help/NSX.md), [NSQ](help/NSQ.md), [NSK](help/NSK.md), [NSA](help/NSA.md) (LLM Inference is entirely on-device, so there is no model network path, certificate-pinning, or custom TLS-trust implementation.) |
+| Resilience | [RS6](help/RS6.md), [RSK](help/RSK.md), [RSA](help/RSA.md) (Only if the user is able to invent a plausible threat) |
+| Cryptography | [CRM5](help/CRM5.md), [CRMJ](help/CRMJ.md), [CRMA](help/CRMA.md) (Only if the user is able to invent a plausible threat) |
+| Cornucopia | [CM2](help/CM2.md), [CM3](help/CM3.md), [CM4](help/CM4.md), [CM5](help/CM5.md), [CM6](help/CM6.md), [CM7](help/CM7.md), [CM9](help/CM9.md), [CMJ](help/CMJ.md), [CMA](help/CMA.md) (Only if the user is able to invent a plausible threat) |
+| Wild cards | [JOAM](help/JOAM.md), [JOBM](help/JOBM.md) | Open-ended compliance and surveillance cards are not represented. |
 
 The full source mapping remains in the
 [Cornucopia MobileApp mappings](https://github.com/OWASP/cornucopia/blob/main/source/mobileapp-mappings-2.0.yaml).
