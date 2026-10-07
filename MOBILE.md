@@ -11,7 +11,7 @@ For web, go to:  [Web Cheat Sheet](/WEB.md#fraud-investigation-llm-application--
 
 ## High-Level Architecture of AI Anti-Fraud 3.0 - Android
 
-![Architecture sequence diagram](diagrams/sequence-andriod.png)
+![Architecture sequence diagram](diagrams/sequence-android.png)
 
 ![Threat model](ThreatDragonModels/threatmodel-android.png)
 
