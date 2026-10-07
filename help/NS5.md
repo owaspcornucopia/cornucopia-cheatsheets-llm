@@ -1,3 +1,5 @@
+[← Back to Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
+
 # NS5 - Backup and local-file exposure
 
 ## Threat

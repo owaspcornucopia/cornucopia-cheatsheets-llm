@@ -1,4 +1,4 @@
-[← Back to Cheat Sheet](/README.md#fraud-investigation-llm-application--cheat-sheet)
+[← Back to Cheat Sheet](/WEB.md#fraud-investigation-llm-application--cheat-sheet)
 
 # SMA — Unable to Detect Novel Session Management Attacks
 

@@ -1,4 +1,4 @@
-[← Back to Android MobileApp coverage](../README.md#android-mobileapp-coverage)
+[← Back to Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
 
 # PC2 — Screen capture and background preview expose sensitive data
 

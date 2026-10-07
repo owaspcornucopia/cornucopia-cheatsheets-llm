@@ -1,3 +1,5 @@
+[← Back to Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
+
 # NS8 - Inadequate protection of data at rest
 
 ## Threat

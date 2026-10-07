@@ -1,3 +1,5 @@
+[← Back to Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
+
 # RS7 - Missing emulator and hostile-device detection
 
 ## Threat

@@ -1,5 +1,9 @@
 # PwnedNext - LLM Web App Cheat Sheet
 
+This is the cheet sheets for the Web LLM Companion guide scenarios.
+For mobile, go to:  [Mobile Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
+ 
+
 ## High-Level Architecture of AI Anti-Fraud 3.0 - Backend
 
 ![Architecture sequence diagram](diagrams/sequence-web.svg)
@@ -71,7 +75,6 @@ Applicable threats for the LLM-based fraud investigation API apps. Each entry li
 | 8 | true | Business rules bypassed through data manipulation via SQL injection | [AZ8](help/AZ8.md) |
 | Queen | true | SQL injection could escalate to command injection | [AZQ](help/AZQ.md) |
 | King | true | Authorization controls can be altered — tokens in source code, data in writable DB | [AZK](help/AZK.md) |
-| Ace | true | No logging to detect authorization bypass or cross-tenant access | [AZA](help/AZA.md) |
 
 ### Cryptography
 
@@ -97,6 +100,7 @@ Applicable threats for the LLM-based fraud investigation API apps. Each entry li
 | Jack | true | No operational security documentation — insecure defaults ship without guidance | [CJ](help/CJ.md) |
 | Queen | true | Real-time detection absence covered by Ace cards | [CQ](help/CQ.md) |
 | King | true | Denial of service via SQL injection (DROP TABLE, DELETE, resource exhaustion) | [CK](help/CK.md) |
+| Ace | depends | Only if the user is able to invent a plausible threat | [CA](help/CA.md) |
 
 ### Large Language Models
 
@@ -109,10 +113,11 @@ Applicable threats for the LLM-based fraud investigation API apps. Each entry li
 | 7 | true | Model artifacts are downloaded from HuggingFace without a pinned revision or integrity verification, allowing a poisoned base model or adapter to be deployed | [LLM7](help/LLM7.md) |
 | 8 | true | The SQL tool has no access restrictions — executes any query the model produces | [LLM8](help/LLM8.md) |
 | 9 | true | Poisoned database records can inject instructions into the model during answer generation | [LLM9](help/LLM9.md) |
-| Jack | true | Models downloaded from HuggingFace without integrity verification at deployment | [LLMJ](help/LLMJ.md) |
-| King | true | Model executes database queries with no human approval — excessive agency | [LLMK](help/LLMK.md) |
-| Queen | true | LLM output fed directly to the SQL engine — improper output handling enables injection | [LLMQ](help/LLMQ.md) |
 | 10 | true | User input can override the system prompt — direct prompt injection | [LLMX](help/LLMX.md) |
+| Jack | true | Models downloaded from HuggingFace without integrity verification at deployment | [LLMJ](help/LLMJ.md) |
+| Queen | true | LLM output fed directly to the SQL engine — improper output handling enables injection | [LLMQ](help/LLMQ.md) |
+| King | true | Model executes database queries with no human approval — excessive agency | [LLMK](help/LLMK.md) |
+| Ace | depends | Only if the user is able to invent a plausible threat | [LLMA](help/LLMA.md) |
 
 ---
 
@@ -172,6 +177,7 @@ The following threats were assessed and determined not applicable to this applic
 | 9 | false | No client-side authorization checks to bypass | [AZ9](help/AZ9.md) |
 | 10 | false | No centralized authorization framework to attack | [AZX](help/AZX.md) |
 | Jack | false | No permission-granting mechanism to exploit | [AZJ](help/AZJ.md) |
+| Ace | false | No permission-granting mechanism to exploit | [AZJ](help/AZA.md) |
 
 ### Cryptography
 
@@ -184,7 +190,7 @@ The following threats were assessed and determined not applicable to this applic
 | 10 | false | No crypto to be weak | [CRX](help/CRX.md) |
 | Queen | false | No master cryptographic secrets exist | [CRQ](help/CRQ.md) |
 | King | false | No crypto code to alter | [CRK](help/CRK.md) |
-| Ace | false | No crypto to attack with novel methods | [CRA](help/CRA.md) |
+| Ace | false | There is no cryptography to attack | [CRA](help/CRA.md) |
 
 ### Cornucopia
 
@@ -192,7 +198,7 @@ The following threats were assessed and determined not applicable to this applic
 |----|------------|--------|---------|
 | 3 | false | No client-side binaries to decompile | [C3](help/C3.md) |
 | 4 | false | Non-repudiation not relevant (read-only fraud queries) | [C4](help/C4.md) |
-| Ace | false | Creative/novel placeholder — not a specific threat | [CA](help/CA.md) |
+| Ace | depends | Only if the user is able to invent a plausible threat | [CA](help/CA.md) |
 
 ### Wild Card
 
@@ -206,6 +212,5 @@ The following threats were assessed and determined not applicable to this applic
 | Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 6 | false | No RAG, vector DB, or MCP sources to poison | [LLM6](help/LLM6.md) |
-| Ace | false | Creative/novel placeholder — not a specific threat | [LLMA](help/LLMA.md) |
-
+| Ace | depends | Only if the user is able to invent a plausible threat | [LLMA](help/LLMA.md) |
 

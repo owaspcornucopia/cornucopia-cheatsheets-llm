@@ -1,3 +1,5 @@
+[← Back to Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
+
 # PC5 - Untrusted intents and IPC inputs
 
 ## Threat

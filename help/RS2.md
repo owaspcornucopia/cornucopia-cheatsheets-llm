@@ -1,4 +1,4 @@
-[← Back to Android MobileApp coverage](../README.md#android-mobileapp-coverage)
+[← Back to Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
 
 # RS2 — Debug and verbose diagnostics remain in production
 

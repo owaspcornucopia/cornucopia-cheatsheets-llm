@@ -1,4 +1,6 @@
-[← Back to Cheat Sheet](/README.md#fraud-investigation-llm-application--cheat-sheet)
+[← Back to Cheat Sheet](/WEB.md#fraud-investigation-llm-application--cheat-sheet)
+[← Back to Mobile Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
+
 
 # LLM2 — Resource Exhaustion via Unbounded LLM Inference
 

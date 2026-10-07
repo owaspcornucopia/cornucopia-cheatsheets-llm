@@ -1,3 +1,5 @@
+[← Back to Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
+
 # AA7 - Replayable and out-of-sequence authorization
 
 ## Threat

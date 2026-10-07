@@ -1,4 +1,4 @@
-[← Back to Cheat Sheet](/README.md#fraud-investigation-llm-application--cheat-sheet)
+[← Back to Cheat Sheet](/WEB.md#fraud-investigation-llm-application--cheat-sheet)
 
 # AZA — Unable to Detect Novel Authorization Attacks
 
@@ -8,26 +8,13 @@ Novel attacks against authorization go undetected because there is no logging or
 
 ## How This Applies
 
-### All implementations
+This threat does not apply to this application.
 
-The application has no logging of authorization-related events:
+## Reasoning
 
-- No record of which data each token accesses
-- No logging of cross-tenant data access attempts
-- No monitoring of SQL queries that access data outside a token's expected scope
-- No alerting on unusual data access patterns
-- None of the four implementations records authorization decisions or database access by token
+This is the Ace (creative/novel attack) card for the Authorization suit. It represents inventing a new attack against the application's Authorization protections.
 
-If an attacker discovers a way to access data they shouldn't (through SQL injection, token misuse, or any other method), there is no detection mechanism. The application is completely blind to authorization violations.
+Since this application has no Authorization protections, there is nothing to attack with novel Authorization techniques. Novel attacks require something to attack — no authorization means no target for attacks.
 
-## Example Attack
+The absence of authorization is the problem itself, already covered comprehensively by other cards.
 
-An attacker systematically exfiltrates all investigation records over several weeks by asking specific questions about different customers. Because there is no logging of what data each token accesses, the cross-tenant access goes unnoticed until a customer discovers their confidential data has been leaked.
-
-## Mitigations
-
-1. **Log all data access** — record which token accessed which records and when.
-2. **Implement authorization event monitoring** — alert on tokens accessing data outside their expected scope.
-3. **Create access baselines** — establish normal patterns for each token and flag deviations.
-4. **Enable audit logging** at the database level to capture all queries with their results.
-5. **Implement periodic access reviews** — regularly verify that access patterns align with intended authorization policies.

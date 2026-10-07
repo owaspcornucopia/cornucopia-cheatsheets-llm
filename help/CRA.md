@@ -1,4 +1,4 @@
-[← Back to Cheat Sheet](/README.md#fraud-investigation-llm-application--cheat-sheet)
+[← Back to Cheat Sheet](/WEB.md#fraud-investigation-llm-application--cheat-sheet)
 
 # CRA — Novel Attack Against Cryptography
 
@@ -8,7 +8,7 @@ This threat does not apply to this application.
 
 ## Reasoning
 
-The CRA card is the Ace (creative/novel attack) card for the Cryptography suit. It represents inventing a new attack against the application's cryptographic protections.
+This is the Ace (creative/novel attack) card for the Cryptography suit. It represents inventing a new attack against the application's cryptographic protections.
 
 Since this application has no cryptographic protections, there is nothing to attack with novel cryptographic techniques. Novel attacks require something to attack — no encryption means no target for cryptanalysis.
 
