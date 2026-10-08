@@ -6,7 +6,7 @@ For mobile, go to:  [Mobile Cheat Sheet](/MOBILE.md#fraud-investigation-llm-appl
 
 ## High-Level Architecture of AI Anti-Fraud 3.0 - Backend
 
-![Architecture sequence diagram](diagrams/sequence-web.svg)
+![Architecture sequence diagram](diagrams/sequence-web.png)
 
 ![Threat model](ThreatDragonModels/threatmodel-web.png)
 
