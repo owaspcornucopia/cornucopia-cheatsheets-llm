@@ -187,7 +187,7 @@ The following threats were assessed and determined not applicable to this applic
 | 4 | false | No encrypted channel exists (can't have unencrypted-within-encrypted) | [CR4](help/CR4.md) |
 | 5 | false | No crypto controls to fail insecurely | [CR5](help/CR5.md) |
 | 9 | false | No random number/GUID generation at runtime | [CR9](help/CR9.md) |
-| 10 | false | No crypto to be weak | [CRX](help/CRX.md) |
+| 10 | false | No crypto in use. It’s not weak it’s missing | [CRX](help/CRX.md) |
 | Queen | false | No master cryptographic secrets exist | [CRQ](help/CRQ.md) |
 | King | false | No crypto code to alter | [CRK](help/CRK.md) |
 | Ace | false | There is no cryptography to attack | [CRA](help/CRA.md) |
