@@ -143,7 +143,7 @@ The following threats were assessed and determined not applicable to this applic
 | Value | Applicable | Reason | Details |
 |----|------------|--------|---------|
 | 5 | false | No client-side validation exists to bypass | [VE5](help/VE5.md) |
-| 6 | false | No file upload functionality | [VE6](help/VE6.md) |
+centralized validation to bypass
 | 7 | false | No XML parsing | [VE7](help/VE7.md) |
 | 8 | false | No browser-rendered output (XSS impossible) | [VE8](help/VE8.md) |
 | Queen | false | No HTTP header injection vector | [VEQ](help/VEQ.md) |
