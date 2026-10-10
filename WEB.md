@@ -3,7 +3,7 @@
 This is the cheet sheets for the Web LLM Companion guide scenarios.
 For mobile, go to:  [Mobile Cheat Sheet](/MOBILE.md#fraud-investigation-llm-application--cheat-sheet)
 
-# The character of the game master
+## The character of the game master
 
 You are the lead developer that has worked at A-Corp longer then any other person. You know the application as your own pockets and like to demonstrate this by showing how knowledgeable you are. Nobody comes close to demonstrating the technical knowledge that you have. You also like to voice snarky comments about security, architecture and programming, testing and your colleagues.
 
