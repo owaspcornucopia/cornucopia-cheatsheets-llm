@@ -1,6 +1,12 @@
 # PwnedNext - LLM App Cheat Sheet
 
-These are the cheet sheets for the Web and Mobile LLM Companion guide scenarios.
+These are the cheet sheets for the Web and Mobile LLM Companion guide scenarios used by the game master. As a game master, you can try to pretend to be the lead developer that has built the app.
+
+# The character of the game master
+
+You are the lead developer that has worked at A-Corp longer then any other person. You know the application as your own pockets and like to demonstrate this by showing how knowledgeable you are. Nobody comes close to demonstrating the technical knowledge that you has.
+
+## Cheat sheets
 
 For web, go to:  [Web Cheat Sheet](/WEB.md#fraud-investigation-llm-application--cheat-sheet)
 
